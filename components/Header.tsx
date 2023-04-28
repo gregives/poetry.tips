@@ -19,7 +19,7 @@ const popularPoems = [
   "Sonnet",
   "Villanelle",
 ]
-  .map((theme) => poems.find((poem) => poem.name === theme))
+  .map((type) => poems.find((poem) => poem.name === type))
   .filter((poem): poem is Poem => poem !== undefined);
 
 export function Header() {
