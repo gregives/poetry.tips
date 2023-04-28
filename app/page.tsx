@@ -1,5 +1,6 @@
 import { Container } from "@/components/Container";
 import { HeroPattern } from "@/components/HeroPattern";
+import { PoemGenerator } from "@/components/PoemGenerator";
 import { poems } from "@/poems";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
@@ -8,16 +9,17 @@ export default function Home() {
   return (
     <Container className="py-24">
       <HeroPattern />
-      <h1 className="text-center text-4xl sm:text-6xl leading-snug sm:leading-snug font-bold tracking-tight text-gray-800 mb-24 sm:mb-32 lg:mb-40">
+      <h1 className="sm:text-center text-4xl sm:text-6xl leading-snug sm:leading-snug font-bold tracking-tight text-gray-800 mb-24 sm:mb-32 lg:mb-40">
         Poem Generator
       </h1>
-      <div className="rounded-lg grid sm:grid-cols-2 gap-4">
+      <PoemGenerator />
+      <div className="mt-24 sm:mt-32 rounded-lg grid sm:grid-cols-2 gap-4">
         {poems.map((poem) => (
           <div
             key={poem.name}
             className={twMerge(
               "group relative p-6 focus-within:ring-2 rounded-xl",
-              poem.classNames.focus,
+              poem.classNames.focusWithin,
               poem.classNames.background
             )}
           >
