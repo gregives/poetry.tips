@@ -7,9 +7,9 @@ import { twMerge } from "tailwind-merge";
 
 export default function Home() {
   return (
-    <Container className="py-24">
+    <Container className="py-16">
       <HeroPattern />
-      <h1 className="sm:text-center text-4xl sm:text-6xl leading-snug sm:leading-snug font-bold tracking-tight text-gray-800 mb-24 sm:mb-32 lg:mb-40">
+      <h1 className="sm:text-center text-4xl sm:text-6xl leading-snug sm:leading-snug font-bold tracking-tight text-gray-800 mb-16 sm:mb-24 lg:mb-32">
         Poem Generator
       </h1>
       <PoemGenerator />

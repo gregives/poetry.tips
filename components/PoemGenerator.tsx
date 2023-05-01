@@ -3,70 +3,41 @@
 import { poems } from "@/poems";
 import { useId, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { PoemResult } from "@/components/PoemResult";
 import { useForm } from "react-hook-form";
-import type { Options } from "@/app/api/generate/route";
-
-const textDecoder = new TextDecoder();
+import { useSession } from "next-auth/react";
+import { LogIn } from "./LogIn";
+import { useRouter } from "next/navigation";
+import { Options } from "@/types";
 
 export function PoemGenerator({
   type,
 }: {
   type?: (typeof poems)[number]["name"];
 }) {
-  const [error, setError] = useState<string>();
-  const [result, setResult] = useState("");
-  const [showResult, setShowResult] = useState(false);
-  const [loading, setLoading] = useState(false);
-
   const poem = poems.find((poem) => poem.name === type) ?? poems[0];
+
+  const [logInOpen, setLogInOpen] = useState(false);
+  const { data: session } = useSession();
+  const router = useRouter();
 
   const typeId = useId();
   const promptId = useId();
 
-  const { register, handleSubmit, watch } = useForm<Options>({
+  const { register, handleSubmit } = useForm<Options>({
     defaultValues: {
       type: type ?? "Random poem",
       prompt: "",
     },
   });
 
-  const generatePoem = handleSubmit(async ({ type, prompt }) => {
-    setError(undefined);
-    setResult("");
-    setShowResult(true);
-    setLoading(true);
+  const generatePoem = handleSubmit((options) => {
+    localStorage.setItem("options", JSON.stringify(options));
 
-    const response = await fetch("/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        type,
-        prompt,
-      }),
-    });
-
-    if (!response.ok || response.body === null) {
-      setError("Something went wrong, try again?");
-      return;
+    if (session) {
+      router.push("/saved?generate=true");
+    } else {
+      setLogInOpen(true);
     }
-
-    const reader = response.body.getReader();
-
-    while (true) {
-      const { value, done } = await reader.read();
-
-      if (done) {
-        break;
-      }
-
-      const chunk = textDecoder.decode(value);
-      setResult((previous) => previous + chunk);
-    }
-
-    setLoading(false);
   });
 
   return (
@@ -89,7 +60,10 @@ export function PoemGenerator({
         <select
           id={typeId}
           className="mt-4 block w-full rounded-xl border-0 py-3 pl-4 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-gray-800"
-          {...register("type")}
+          required
+          {...register("type", {
+            required: true,
+          })}
         >
           <option>Random poem</option>
           {poems.map((poem) => (
@@ -121,7 +95,10 @@ export function PoemGenerator({
             id={promptId}
             className="indent-[15.25ch] block w-full rounded-xl border-0 py-3 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800 resize-none"
             placeholder="a knight in shining armour"
-            {...register("prompt")}
+            required
+            {...register("prompt", {
+              required: true,
+            })}
           />
         </div>
       </div>
@@ -135,12 +112,10 @@ export function PoemGenerator({
       >
         Generate poem
       </button>
-      <PoemResult
-        result={result}
-        options={watch()}
-        onClose={() => setShowResult(false)}
-        open={showResult}
-        loading={loading}
+      <LogIn
+        open={logInOpen}
+        onClose={() => setLogInOpen(false)}
+        callbackUrl="/saved?generate=true"
       />
     </form>
   );

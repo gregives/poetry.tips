@@ -1,4 +1,4 @@
-import { GridPattern } from "@/components/GridPattern";
+import { GridPattern } from "./GridPattern";
 import { twMerge } from "tailwind-merge";
 
 type HeroPatternProperties = {

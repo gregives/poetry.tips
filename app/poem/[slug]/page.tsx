@@ -5,6 +5,23 @@ import { poems } from "@/poems";
 import { notFound } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const poem = poems.find((poem) => poem.slug === params.slug);
+
+  if (poem === undefined) {
+    return notFound();
+  }
+
+  return {
+    title: `AI ${poem.name} Generator`,
+    description: `Automatically generate ${poem.name.toLowerCase()}s using artificial intelligence. Just describe the theme of your poem and the poem generator will do all the rhyming and syllables for you.`,
+  };
+}
+
 export default function PoemPage({
   params,
 }: {
@@ -19,11 +36,11 @@ export default function PoemPage({
   }
 
   return (
-    <Container className="py-24">
+    <Container className="py-16">
       <HeroPattern className={poem.classNames.background} />
       <h1
         className={twMerge(
-          "sm:text-center text-4xl sm:text-6xl leading-snug sm:leading-snug font-bold tracking-tight mb-24 sm:mb-32 lg:mb-40",
+          "sm:text-center text-4xl sm:text-6xl leading-snug sm:leading-snug font-bold tracking-tight mb-16 sm:mb-24 lg:mb-32",
           poem.classNames.title
         )}
       >

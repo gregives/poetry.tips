@@ -415,4 +415,4 @@ export const poems = (
     : "a",
 }));
 
-export type Poem = (typeof poems)[number];
+export type TypeOfPoem = (typeof poems)[number];

@@ -26,9 +26,10 @@ export type OpenAIStreamPayload = {
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
 
-export async function OpenAIStream(payload: OpenAIStreamPayload) {
-  let counter = 0;
-
+export async function createOpenAIStream(
+  payload: OpenAIStreamPayload,
+  callback?: (response: string) => Promise<void>
+) {
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     headers: {
       "Content-Type": "application/json",
@@ -38,6 +39,9 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
     body: JSON.stringify(payload),
   });
 
+  let counter = 0;
+  let completeResponse = "";
+
   const stream = new ReadableStream({
     async start(controller) {
       function onParse(event: ParsedEvent | ReconnectInterval) {
@@ -46,7 +50,12 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
 
           // https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream
           if (data === "[DONE]") {
-            controller.close();
+            if (typeof callback === "function") {
+              callback(completeResponse).then(() => controller.close());
+            } else {
+              controller.close();
+            }
+
             return;
           }
 
@@ -62,6 +71,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
             const queue = textEncoder.encode(text);
             controller.enqueue(queue);
             counter++;
+            completeResponse += text;
           } catch (error) {
             // Maybe parse error
             controller.error(error);
