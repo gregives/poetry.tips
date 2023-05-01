@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import {
   Dialog,
@@ -20,6 +20,7 @@ import { Container } from "./Container";
 import { TypeOfPoem, poems } from "@/poems";
 import { LogIn } from "./LogIn";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const popularPoems = [
   "Acrostic Poem",
@@ -35,6 +36,12 @@ export function Header() {
   const { data: session } = useSession();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [logInOpen, setLogInOpen] = useState(false);
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header>
@@ -222,16 +229,22 @@ export function Header() {
                   All themes
                 </Link>
               </div>
-              <div className="py-6">
+              <div className="py-6 flex flex-col items-stretch">
                 {session ? (
                   <>
                     <div className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900">
                       {session.user?.name ?? "Logged in"}
                     </div>
+                    <Link
+                      href="/saved"
+                      className="-mx-3 block text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Generated poems
+                    </Link>
                     <button
                       type="button"
                       onClick={() => signOut()}
-                      className="-mx-3 block w-full text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      className="-mx-3 block text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       Log out
                     </button>
@@ -239,7 +252,7 @@ export function Header() {
                 ) : (
                   <button
                     type="button"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     onClick={() => setLogInOpen(true)}
                   >
                     Log in

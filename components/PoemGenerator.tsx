@@ -25,7 +25,7 @@ export function PoemGenerator({
 
   const { register, handleSubmit } = useForm<Options>({
     defaultValues: {
-      type: type ?? "Random poem",
+      type: type ?? "Random Poem",
       prompt: "",
     },
   });
@@ -65,7 +65,7 @@ export function PoemGenerator({
             required: true,
           })}
         >
-          <option>Random poem</option>
+          <option>Random Poem</option>
           {poems.map((poem) => (
             <option key={poem.name}>{poem.name}</option>
           ))}

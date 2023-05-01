@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
   const options: Options = await request.json();
 
   const content = `Write a ${
-    options.type === "Random poem" ? "poem" : options.type.toLowerCase()
+    options.type === "Random Poem" ? "poem" : options.type.toLowerCase()
   } about ${options.prompt}`;
 
   const onClose = async (response: string) => {

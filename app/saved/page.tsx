@@ -42,7 +42,7 @@ export default async function Generate() {
             <PoemCard key={savedPoem.response}>{savedPoem.response}</PoemCard>
           ))}
       </div>
-      <div className="relative hidden peer-empty:block text-center rounded-xl p-6 sm:p-8 md:p-12 border-2 border-dashed border-gray-300 hover:border-gray-400">
+      <div className="relative hidden peer-empty:block text-center rounded-xl px-6 py-12 border-2 border-dashed border-gray-300 hover:border-gray-400">
         <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
           No poems
         </h3>
