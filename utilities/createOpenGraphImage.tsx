@@ -29,7 +29,7 @@ export async function createOpenGraphImage({
     (
       <div
         style={{
-          backgroundImage: `linear-gradient(to bottom, ${color[300]}, white)`,
+          backgroundImage: `linear-gradient(to bottom, ${color[200]}, white)`,
           width: "100%",
           height: "100%",
           display: "flex",
@@ -66,6 +66,7 @@ export async function createOpenGraphImage({
             fontSize: 48,
             display: "flex",
             alignItems: "center",
+            marginLeft: -16,
           }}
         >
           <svg
@@ -75,9 +76,9 @@ export async function createOpenGraphImage({
             stroke-width="1.5"
             stroke="currentColor"
             style={{
-              width: "1em",
-              height: "1em",
-              marginRight: 16,
+              width: "1.2em",
+              height: "1.2em",
+              marginRight: 24,
             }}
           >
             <path
