@@ -2,24 +2,12 @@ import { Container } from "@/components/Container";
 import { HeroPattern } from "@/components/HeroPattern";
 import { PoemGenerator } from "@/components/PoemGenerator";
 import { poems } from "@/poems";
+import { generatePoemMetadata } from "@/utilities/generatePoemMetadata";
 import { notFound } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const poem = poems.find((poem) => poem.slug === params.slug);
-
-  if (poem === undefined) {
-    return notFound();
-  }
-
-  return {
-    title: `AI ${poem.name} Generator`,
-    description: `Automatically generate ${poem.name.toLowerCase()}s using artificial intelligence. Just describe the theme of your poem and the poem generator will do all the rhyming and syllables for you.`,
-  };
+export function generateMetadata({ params }: { params: { slug: string } }) {
+  return generatePoemMetadata(params.slug);
 }
 
 export default function PoemPage({

@@ -4,16 +4,13 @@ import { SessionProvider } from "@/components/SessionProvider";
 import { Header } from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getServerSession } from "@/utilities/getServerSession";
+import { generatePoemMetadata } from "@/utilities/generatePoemMetadata";
 
 const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "AI Poem Generator",
-  description:
-    "Automatically generate poems using artificial intelligence. Just describe the theme of your poem and the poem generator will do all the rhyming and syllables for you.",
-};
+export const metadata = generatePoemMetadata();
 
 export default async function RootLayout({
   children,
