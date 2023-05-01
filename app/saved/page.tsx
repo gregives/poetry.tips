@@ -31,7 +31,7 @@ export default async function Generate() {
     <Container className="py-16">
       <div className="fixed inset-0 -z-10 bg-gray-100" />
       <HeroPattern className="bg-gradient-to-br from-gray-50 to-gray-100" />
-      <h1 className="text-3xl sm:text-4xl leading-snug sm:leading-snug font-bold tracking-tight mb-8">
+      <h1 className="text-3xl sm:text-4xl leading-snug sm:leading-snug font-bold tracking-tight mb-8 sm:mb-16">
         Generated Poems
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 peer">
