@@ -28,10 +28,10 @@ export default async function Generate() {
   const savedPoems: Poem[] = user.data().poems ?? [];
 
   return (
-    <Container className="py-16">
-      <div className="fixed inset-0 -z-10 bg-gray-100" />
+    <Container className="pt-16 pb-24">
+      <div className="fixed inset-[-50%] -z-10 bg-gray-100" />
       <HeroPattern className="bg-gradient-to-br from-gray-50 to-gray-100" />
-      <h1 className="text-3xl sm:text-4xl leading-snug sm:leading-snug font-bold tracking-tight mb-8 sm:mb-16">
+      <h1 className="text-3xl/snug sm:text-4xl/snug font-bold tracking-tight mb-8 sm:mb-16">
         Generated Poems
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 peer">
@@ -52,7 +52,7 @@ export default async function Generate() {
         <div className="mt-8">
           <Link
             href="/"
-            className="inline-flex items-center rounded-xl py-3 px-4 font-medium bg-gradient-to-br from-indigo-400 to-indigo-500 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+            className="inline-flex items-center rounded-xl py-3 px-4 font-medium bg-gradient-to-br from-indigo-400 to-indigo-500 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             <span className="absolute inset-0"></span>
             <PlusIcon className="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" />

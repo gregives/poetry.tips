@@ -53,7 +53,7 @@ export function Header() {
           <div className="flex md:flex-1">
             <Link
               href="/"
-              className="-m-1 p-1 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-800"
+              className="-m-1 p-1 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
             >
               <span className="sr-only">Poem Generator</span>
               <ChatBubbleOvalLeftEllipsisIcon className="w-6 h-6" />
@@ -70,8 +70,14 @@ export function Header() {
             </button>
           </div>
           <Popover.Group className="hidden md:flex md:gap-x-12">
+            <Link
+              href="/"
+              className="-m-1 p-1 text-sm font-semibold leading-6 text-gray-900 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
+            >
+              All themes
+            </Link>
             <Popover className="relative">
-              <Popover.Button className="flex items-center gap-x-1 -m-1 p-1 text-sm font-semibold leading-6 text-gray-900 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-800">
+              <Popover.Button className="flex items-center gap-x-1 -m-1 p-1 text-sm font-semibold leading-6 text-gray-900 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800">
                 Popular themes
                 <ChevronDownIcon
                   className="h-5 w-5 flex-none text-gray-400"
@@ -93,7 +99,7 @@ export function Header() {
                       <Link
                         key={poem.name}
                         href={poem.href}
-                        className="block px-2 py-1 my-1 hover:text-gray-500 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-800"
+                        className="block px-2 py-1 my-1 hover:text-gray-500 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
                       >
                         {poem.name}
                       </Link>
@@ -103,17 +109,17 @@ export function Header() {
               </Transition>
             </Popover>
             <Link
-              href="/"
-              className="-m-1 p-1 text-sm font-semibold leading-6 text-gray-900 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-800"
+              href="/blog"
+              className="-m-1 p-1 text-sm font-semibold leading-6 text-gray-900 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
             >
-              All themes
+              Blog
             </Link>
           </Popover.Group>
           <div className="hidden md:flex md:flex-1 md:justify-end">
             {session ? (
               <Menu as="div" className="relative">
                 <div>
-                  <Menu.Button className="-m-1 p-1 text-sm font-semibold leading-6 text-gray-900 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-800">
+                  <Menu.Button className="-m-1 p-1 text-sm font-semibold leading-6 text-gray-900 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800">
                     {session.user?.name ?? "Logged in"}
                   </Menu.Button>
                 </div>
@@ -160,7 +166,7 @@ export function Header() {
             ) : (
               <button
                 type="button"
-                className="-m-1 p-1 text-sm font-semibold leading-6 text-gray-900 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-800"
+                className="-m-1 p-1 text-sm font-semibold leading-6 text-gray-900 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
                 onClick={() => setLogInOpen(true)}
               >
                 Log in
@@ -194,6 +200,12 @@ export function Header() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
+                <Link
+                  href="/"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  All themes
+                </Link>
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
@@ -223,10 +235,10 @@ export function Header() {
                   )}
                 </Disclosure>
                 <Link
-                  href="/"
+                  href="/blog"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  All themes
+                  Blog
                 </Link>
               </div>
               <div className="py-6 flex flex-col items-stretch">

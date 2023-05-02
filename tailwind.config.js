@@ -1,9 +1,10 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./poems/**/*.{js,ts,jsx,tsx,mdx}",
+    "./mdx-components.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -13,7 +14,7 @@ module.exports = {
       keyframes: {
         blink: {
           to: {
-            visibility: 'hidden'
+            visibility: "hidden"
           },
         },
       },

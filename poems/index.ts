@@ -6,120 +6,120 @@ const classNames = [
     color: colors.red,
     background: "bg-gradient-to-br from-red-50 to-red-100",
     title: "text-red-800",
-    focusWithin: "focus-within:ring-red-500",
-    focusVisible: "focus-visible:ring-red-500",
+    focusWithin: "focus-within:outline-red-500",
+    focusVisible: "focus-visible:outline-red-500",
   },
   {
     color: colors.orange,
     background: "bg-gradient-to-br from-orange-50 to-orange-100",
     title: "text-orange-800",
-    focusWithin: "focus-within:ring-orange-500",
-    focusVisible: "focus-visible:ring-orange-500",
+    focusWithin: "focus-within:outline-orange-500",
+    focusVisible: "focus-visible:outline-orange-500",
   },
   {
     color: colors.amber,
     background: "bg-gradient-to-br from-amber-50 to-amber-100",
     title: "text-amber-800",
-    focusWithin: "focus-within:ring-amber-500",
-    focusVisible: "focus-visible:ring-amber-500",
+    focusWithin: "focus-within:outline-amber-500",
+    focusVisible: "focus-visible:outline-amber-500",
   },
   {
     color: colors.yellow,
     background: "bg-gradient-to-br from-yellow-50 to-yellow-100",
     title: "text-yellow-800",
-    focusWithin: "focus-within:ring-yellow-500",
-    focusVisible: "focus-visible:ring-yellow-500",
+    focusWithin: "focus-within:outline-yellow-500",
+    focusVisible: "focus-visible:outline-yellow-500",
   },
   {
     color: colors.lime,
     background: "bg-gradient-to-br from-lime-50 to-lime-100",
     title: "text-lime-800",
-    focusWithin: "focus-within:ring-lime-500",
-    focusVisible: "focus-visible:ring-lime-500",
+    focusWithin: "focus-within:outline-lime-500",
+    focusVisible: "focus-visible:outline-lime-500",
   },
   {
     color: colors.green,
     background: "bg-gradient-to-br from-green-50 to-green-100",
     title: "text-green-800",
-    focusWithin: "focus-within:ring-green-500",
-    focusVisible: "focus-visible:ring-green-500",
+    focusWithin: "focus-within:outline-green-500",
+    focusVisible: "focus-visible:outline-green-500",
   },
   {
     color: colors.emerald,
     background: "bg-gradient-to-br from-emerald-50 to-emerald-100",
     title: "text-emerald-800",
-    focusWithin: "focus-within:ring-emerald-500",
-    focusVisible: "focus-visible:ring-emerald-500",
+    focusWithin: "focus-within:outline-emerald-500",
+    focusVisible: "focus-visible:outline-emerald-500",
   },
   {
     color: colors.teal,
     background: "bg-gradient-to-br from-teal-50 to-teal-100",
     title: "text-teal-800",
-    focusWithin: "focus-within:ring-teal-500",
-    focusVisible: "focus-visible:ring-teal-500",
+    focusWithin: "focus-within:outline-teal-500",
+    focusVisible: "focus-visible:outline-teal-500",
   },
   {
     color: colors.cyan,
     background: "bg-gradient-to-br from-cyan-50 to-cyan-100",
     title: "text-cyan-800",
-    focusWithin: "focus-within:ring-cyan-500",
-    focusVisible: "focus-visible:ring-cyan-500",
+    focusWithin: "focus-within:outline-cyan-500",
+    focusVisible: "focus-visible:outline-cyan-500",
   },
   {
     color: colors.sky,
     background: "bg-gradient-to-br from-sky-50 to-sky-100",
     title: "text-sky-800",
-    focusWithin: "focus-within:ring-sky-500",
-    focusVisible: "focus-visible:ring-sky-500",
+    focusWithin: "focus-within:outline-sky-500",
+    focusVisible: "focus-visible:outline-sky-500",
   },
   {
     color: colors.blue,
     background: "bg-gradient-to-br from-blue-50 to-blue-100",
     title: "text-blue-800",
-    focusWithin: "focus-within:ring-blue-500",
-    focusVisible: "focus-visible:ring-blue-500",
+    focusWithin: "focus-within:outline-blue-500",
+    focusVisible: "focus-visible:outline-blue-500",
   },
   {
     color: colors.indigo,
     background: "bg-gradient-to-br from-indigo-50 to-indigo-100",
     title: "text-indigo-800",
-    focusWithin: "focus-within:ring-indigo-500",
-    focusVisible: "focus-visible:ring-indigo-500",
+    focusWithin: "focus-within:outline-indigo-500",
+    focusVisible: "focus-visible:outline-indigo-500",
   },
   {
     color: colors.violet,
     background: "bg-gradient-to-br from-violet-50 to-violet-100",
     title: "text-violet-800",
-    focusWithin: "focus-within:ring-violet-500",
-    focusVisible: "focus-visible:ring-violet-500",
+    focusWithin: "focus-within:outline-violet-500",
+    focusVisible: "focus-visible:outline-violet-500",
   },
   {
     color: colors.purple,
     background: "bg-gradient-to-br from-purple-50 to-purple-100",
     title: "text-purple-800",
-    focusWithin: "focus-within:ring-purple-500",
-    focusVisible: "focus-visible:ring-purple-500",
+    focusWithin: "focus-within:outline-purple-500",
+    focusVisible: "focus-visible:outline-purple-500",
   },
   {
     color: colors.fuchsia,
     background: "bg-gradient-to-br from-fuchsia-50 to-fuchsia-100",
     title: "text-fuchsia-800",
-    focusWithin: "focus-within:ring-fuchsia-500",
-    focusVisible: "focus-visible:ring-fuchsia-500",
+    focusWithin: "focus-within:outline-fuchsia-500",
+    focusVisible: "focus-visible:outline-fuchsia-500",
   },
   {
     color: colors.pink,
     background: "bg-gradient-to-br from-pink-50 to-pink-100",
     title: "text-pink-800",
-    focusWithin: "focus-within:ring-pink-500",
-    focusVisible: "focus-visible:ring-pink-500",
+    focusWithin: "focus-within:outline-pink-500",
+    focusVisible: "focus-visible:outline-pink-500",
   },
   {
     color: colors.rose,
     background: "bg-gradient-to-br from-rose-50 to-rose-100",
     title: "text-rose-800",
-    focusWithin: "focus-within:ring-rose-500",
-    focusVisible: "focus-visible:ring-rose-500",
+    focusWithin: "focus-within:outline-rose-500",
+    focusVisible: "focus-visible:outline-rose-500",
   },
 ];
 
@@ -136,7 +136,7 @@ export const poems = (
         "Write the word or phrase vertically down the page, with each letter on a new line",
         "Brainstorm words or phrases that start with each letter of your chosen word or phrase",
         "Organize your ideas in a way that makes sense to you",
-        "Write your poem using the words or phrases you've brainstormed",
+        "Write your poem using the words or phrases you’ve brainstormed",
         "Revise and edit your poem",
         "Finalize your poem by writing it out neatly or typing it up",
       ],
@@ -146,7 +146,7 @@ export const poems = (
       description:
         "A narrative poem that tells a story, often about love or adventure. Ballads often have a simple and repetitive structure, and are often sung or recited aloud.",
       example:
-        "Oh, my love is like a red, red rose,\nThat's newly sprung in June;\nOh, my love is like the melody\nThat's sweetly played in tune.",
+        "Oh, my love is like a red, red rose,\nThat’s newly sprung in June;\nOh, my love is like the melody\nThat’s sweetly played in tune.",
       steps: [
         "Choose a story or event to write about",
         "Decide on a rhyme scheme (usually ABAB) and meter (usually iambic tetrameter or iambic pentameter)",
@@ -159,7 +159,7 @@ export const poems = (
       description:
         "A poem that has a regular meter and rhyme scheme, but does not rhyme. Blank verse is often used in dramatic monologues or epic poetry.",
       example:
-        "To be, or not to be: that is the question:\nWhether 'tis nobler in the mind to suffer\nThe slings and arrows of outrageous fortune,\nOr to take arms against a sea of troubles",
+        "To be, or not to be: that is the question:\nWhether ’tis nobler in the mind to suffer\nThe slings and arrows of outrageous fortune,\nOr to take arms against a sea of troubles",
       steps: [
         "Choose a topic or theme for your poem",
         "Write in unrhymed iambic pentameter (10 syllables per line, with the stress on the second syllable of each foot)",
@@ -186,7 +186,7 @@ export const poems = (
     {
       name: "Concrete Poem",
       description:
-        "A type of poem where the words are arranged in a specific shape or pattern that relates to the poem's subject matter.",
+        "A type of poem where the words are arranged in a specific shape or pattern that relates to the poem’s subject matter.",
       example:
         "The Mouse\n\nA little mouse with clogs on\nStruts across the floor\nAnd makes a funny sound\nWhen he comes and goes\nPast the open door.\n\nOnce upon a time\nThere was a mouse\nWho lived in a house\nIn the corner of the room\nRight by the broom.\n\nHe ate some cheese\nAnd he started to sneeze.\n\nThis is a poem\nAbout a mouse.",
       steps: [
@@ -264,7 +264,7 @@ export const poems = (
     {
       name: "Ghazal",
       description:
-        "A form of Persian poetry that is often used to express themes of love and longing. Ghazals have a specific structure, with each couplet containing its own self-contained thought or image, and the final couplet including the poet's signature.",
+        "A form of Persian poetry that is often used to express themes of love and longing. Ghazals have a specific structure, with each couplet containing its own self-contained thought or image, and the final couplet including the poet’s signature.",
       example:
         "I have not seen her in so long, it seems\nThat I am but a shadow of my dreams",
       steps: [
@@ -272,7 +272,7 @@ export const poems = (
         "Write a series of couplets that end with the same word or phrase (the radif)",
         "Use each couplet to explore a different aspect or idea related to the theme",
         "Use the same meter and rhyme scheme (usually AA BA CA, etc.) throughout the poem",
-        "Include the poet's name (takhallus) in the final couplet",
+        "Include the poet’s name (takhallus) in the final couplet",
         "Revise and edit your poem for clarity and coherence",
       ],
     },
@@ -295,7 +295,7 @@ export const poems = (
       description:
         "A humorous poem that has a specific structure of five lines. The first, second, and fifth lines rhyme with each other, while the third and fourth lines rhyme with each other. Limericks often have a bawdy or nonsensical tone.",
       example:
-        "There was an Old Man with a beard,\nWho said, 'It is just as I feared!—\nTwo Owls and a Hen,\nFour Larks and a Wren,\nHave all built their nests in my beard!'",
+        "There was an Old Man with a beard,\nWho said, ’It is just as I feared!—\nTwo Owls and a Hen,\nFour Larks and a Wren,\nHave all built their nests in my beard!’",
       steps: [
         "Choose a subject or theme for your poem",
         "Write a five-line poem with a rhyme scheme of AABBA",
@@ -310,7 +310,7 @@ export const poems = (
       description:
         "A poem that tells a story, often with a plot, characters, and a setting. Narrative poems can be long or short, and may be written in any poetic form.",
       example:
-        "So all day long the noise of battle rolled\nAmong the mountains by the winter sea;\nUntil King Hrothgar's men stood like a wall\nWith helmets bright and shields upraised, and knew\nThat nevermore should any creatures of evil\nDo harm to men in Heorot. The work was done,\nThe victory won.",
+        "So all day long the noise of battle rolled\nAmong the mountains by the winter sea;\nUntil King Hrothgar’s men stood like a wall\nWith helmets bright and shields upraised, and knew\nThat nevermore should any creatures of evil\nDo harm to men in Heorot. The work was done,\nThe victory won.",
       steps: [
         "Choose a story or event to write about",
         "Write in stanzas, using a consistent rhyme scheme and meter",
@@ -324,7 +324,7 @@ export const poems = (
       description:
         "A poem that expresses admiration or praise for a person, place, or thing. Odes often have a formal and serious tone.",
       example:
-        "Thou still unravish'd bride of quietness,\nThou foster-child of silence and slow time,\nSylvan historian, who canst thus express\nA flowery tale more sweetly than our rhyme:",
+        "Thou still unravish’d bride of quietness,\nThou foster-child of silence and slow time,\nSylvan historian, who canst thus express\nA flowery tale more sweetly than our rhyme:",
       steps: [
         "Choose a subject or topic that you want to praise or celebrate",
         "Write in stanzas, using a consistent meter and rhyme scheme (often ABAB or ABBA)",
@@ -368,7 +368,7 @@ export const poems = (
       description:
         "A fourteen-line poem that has a specific rhyme scheme and structure. Sonnets can be written in a variety of meters and often focus on themes of love and beauty.",
       example:
-        "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date:\nSometime too hot the eye of heaven shines,\nAnd often is his gold complexion dimm'd;\nAnd every fair from fair sometime declines,\nBy chance, or nature's changing course untrimm'd;\nBut thy eternal summer shall not fade\nNor lose possession of that fair thou owest;\nNor shall Death brag thou wander'st in his shade,\nWhen in eternal lines to time thou growest:\nSo long as men can breathe or eyes can see,\nSo long lives this, and this gives life to thee.",
+        "Shall I compare thee to a summer’s day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer’s lease hath all too short a date:\nSometime too hot the eye of heaven shines,\nAnd often is his gold complexion dimm’d;\nAnd every fair from fair sometime declines,\nBy chance, or nature’s changing course untrimm’d;\nBut thy eternal summer shall not fade\nNor lose possession of that fair thou owest;\nNor shall Death brag thou wander’st in his shade,\nWhen in eternal lines to time thou growest:\nSo long as men can breathe or eyes can see,\nSo long lives this, and this gives life to thee.",
       steps: [
         "Choose a theme or subject for your poem",
         "Write in iambic pentameter (a metrical pattern of ten syllables per line, with the stress on every other syllable)",
@@ -383,7 +383,7 @@ export const poems = (
       description:
         "A five-line poem that originated in Japan. The first and third lines have five syllables, the second and fourth lines have seven syllables, and the final line has five syllables. Tankas often focus on themes of nature or love.",
       example:
-        "Autumn wind blows strong\nGolden leaves dance in its wake\nNature's grand encore\nFading memories of warmth\nWinter's chill will soon be here",
+        "Autumn wind blows strong\nGolden leaves dance in its wake\nNature’s grand encore\nFading memories of warmth\nWinter’s chill will soon be here",
       steps: [
         "Choose a nature or seasonal theme for your poem",
         "Write five lines with a syllable count of 5-7-5-7-7",
