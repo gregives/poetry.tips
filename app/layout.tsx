@@ -4,13 +4,13 @@ import { SessionProvider } from "@/components/SessionProvider";
 import { Header } from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getServerSession } from "@/utilities/getServerSession";
-import { generatePoemMetadata } from "@/utilities/generatePoemMetadata";
+import { generateMetadataFromSlug } from "@/utilities/generateMetadataFromSlug";
 
 const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata = generatePoemMetadata();
+export const metadata = generateMetadataFromSlug();
 
 export default async function RootLayout({
   children,

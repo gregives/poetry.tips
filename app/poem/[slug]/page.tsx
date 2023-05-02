@@ -2,12 +2,12 @@ import { Container } from "@/components/Container";
 import { HeroPattern } from "@/components/HeroPattern";
 import { PoemGenerator } from "@/components/PoemGenerator";
 import { poems } from "@/poems";
-import { generatePoemMetadata } from "@/utilities/generatePoemMetadata";
+import { generateMetadataFromSlug } from "@/utilities/generateMetadataFromSlug";
 import { notFound } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
-  return generatePoemMetadata(params.slug);
+  return generateMetadataFromSlug(params.slug);
 }
 
 export default function PoemPage({

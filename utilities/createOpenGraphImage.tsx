@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/server";
 import { poems } from "@/poems";
-import { generatePoemMetadata } from "./generatePoemMetadata";
+import { generateMetadataFromSlug } from "./generateMetadataFromSlug";
 
 // Download fonts from CDN on the Edge
 const InterRegular = fetch(
@@ -17,7 +17,7 @@ type OpenGraphImageProperties = {
   color?: (typeof poems)[number]["classNames"]["color"];
 };
 
-const defaultMetadata = generatePoemMetadata();
+const defaultMetadata = generateMetadataFromSlug();
 
 export async function createOpenGraphImage({
   title = defaultMetadata.title,
