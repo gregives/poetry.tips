@@ -8,7 +8,7 @@ const InterRegular = fetch(
 ).then((response) => response.arrayBuffer());
 
 const InterBold = fetch(
-  new URL("https://fonts.cdnfonts.com/s/19795/Inter-Bold.woff", import.meta.url)
+  "https://fonts.cdnfonts.com/s/19795/Inter-Bold.woff"
 ).then((response) => response.arrayBuffer());
 
 type OpenGraphImageProperties = {
