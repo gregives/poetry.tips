@@ -24,11 +24,11 @@ export default function PoemPage({
   }
 
   return (
-    <Container className="py-16">
+    <Container className="pt-16 pb-24">
       <HeroPattern className={poem.classNames.background} />
       <h1
         className={twMerge(
-          "sm:text-center text-4xl sm:text-6xl leading-snug sm:leading-snug font-bold tracking-tight mb-16 sm:mb-24 lg:mb-32",
+          "sm:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight mb-16 sm:mb-24 lg:mb-32",
           poem.classNames.title
         )}
       >

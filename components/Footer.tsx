@@ -27,7 +27,7 @@ function splitIntoFourColumns<T>(array: T[], chunks: number): T[][] {
 
 const [first, second, third, fourth] = splitIntoFourColumns(poems, 4);
 
-export default function Example() {
+export function Footer() {
   return (
     <footer aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -46,7 +46,7 @@ export default function Example() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-sm leading-6 text-gray-600 hover:text-gray-900 -m-1 p-1 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-800"
+                      className="text-sm leading-6 text-gray-600 hover:text-gray-900 -m-1 p-1 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
                     >
                       {item.name}
                     </Link>
@@ -58,7 +58,7 @@ export default function Example() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-sm leading-6 text-gray-600 hover:text-gray-900 -m-1 p-1 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-800"
+                      className="text-sm leading-6 text-gray-600 hover:text-gray-900 -m-1 p-1 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
                     >
                       {item.name}
                     </Link>
@@ -72,7 +72,7 @@ export default function Example() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-sm leading-6 text-gray-600 hover:text-gray-900 -m-1 p-1 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-800"
+                      className="text-sm leading-6 text-gray-600 hover:text-gray-900 -m-1 p-1 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
                     >
                       {item.name}
                     </Link>
@@ -84,7 +84,7 @@ export default function Example() {
                   <li key={item.name}>
                     <Link
                       href={item.href}
-                      className="text-sm leading-6 text-gray-600 hover:text-gray-900 -m-1 p-1 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-800"
+                      className="text-sm leading-6 text-gray-600 hover:text-gray-900 -m-1 p-1 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
                     >
                       {item.name}
                     </Link>

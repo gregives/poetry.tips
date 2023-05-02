@@ -104,7 +104,7 @@ export function PoemGenerator({
       </div>
       <button
         className={twMerge(
-          "block w-full rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:ring-2 hover:brightness-95 hover:saturate-150",
+          "block w-full rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:brightness-95 hover:saturate-150",
           poem.classNames.background,
           poem.classNames.title,
           poem.classNames.focusVisible

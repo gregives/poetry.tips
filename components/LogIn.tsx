@@ -61,7 +61,7 @@ export function LogIn({ open, onClose, callbackUrl }: LogInProperties) {
                 <div className="mt-8 space-y-4">
                   <button
                     type="button"
-                    className="flex w-full justify-center items-center rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 py-3 px-4 font-medium hover:from-gray-100 hover:to-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800"
+                    className="flex w-full justify-center items-center rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 py-3 px-4 font-medium hover:from-gray-100 hover:to-gray-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800"
                     onClick={() =>
                       signIn("google", {
                         callbackUrl,
@@ -79,7 +79,7 @@ export function LogIn({ open, onClose, callbackUrl }: LogInProperties) {
                   </button>
                   <button
                     type="button"
-                    className="flex w-full justify-center items-center rounded-xl py-3 px-4 font-medium ring-1 ring-gray-100 hover:ring-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-800"
+                    className="flex w-full justify-center items-center rounded-xl py-3 px-4 font-medium ring-1 ring-gray-100 hover:ring-gray-200 focus-visible:ring-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800"
                     onClick={onClose}
                   >
                     Cancel
