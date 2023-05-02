@@ -3,11 +3,11 @@ import { poems } from "@/poems";
 import { generatePoemMetadata } from "./generatePoemMetadata";
 
 const InterRegular = fetch(
-  new URL("@/assets/InterRegular.woff", import.meta.url)
+  new URL("../assets/InterRegular.woff", import.meta.url)
 ).then((response) => response.arrayBuffer());
 
 const InterBold = fetch(
-  new URL("@/assets/InterBold.woff", import.meta.url)
+  new URL("../assets/InterBold.woff", import.meta.url)
 ).then((response) => response.arrayBuffer());
 
 type OpenGraphImageProperties = {
