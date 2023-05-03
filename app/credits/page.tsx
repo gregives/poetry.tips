@@ -14,7 +14,8 @@ type Tier = {
 };
 
 const callback =
-  (process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL) ||
+  (process.env.VERCEL_ENV === "preview" &&
+    `https://${process.env.VERCEL_URL}/credits`) ||
   "https://www.poetry.tips/credits";
 
 export default async function CreditsPage() {
