@@ -10,5 +10,3 @@ export default async function og({ params }: { params: { slug: string } }) {
     color: poem?.classNames.color,
   });
 }
-
-export const runtime = "edge";
