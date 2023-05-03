@@ -3,6 +3,12 @@ import { poems } from "@/poems";
 
 export const articles: string[] = [
   "10-reasons-why-using-a-poem-generator-can-boost-your-creativity",
+  "how-to-use-an-acrostic-poem-generator",
+  "rhyming-poem-generator-enhance-your-poetic-versatility",
+  "haiku-poem-generator-the-zen-art-of-poetic-composition",
+  "sonnet-poem-generator-how-to-write-your-own-shakespearean-sonnet",
+  "limerick-poem-generator-a-playful-and-witty-poetry-style",
+  "the-pros-and-cons-of-using-a-poem-generator-for-poetry-writing",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -15,6 +21,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `https://www.poetry.tips/poem/${poem.slug}`,
       lastModified: new Date(),
     })),
+    {
+      url: "https://www.poetry.tips/blog",
+      lastModified: new Date(),
+    },
     ...articles.map((slug) => ({
       url: `https://www.poetry.tips/blog/${slug}`,
       lastModified: new Date(),

@@ -27,7 +27,7 @@ export default async function Blog() {
               key={article.slug}
               className="relative isolate flex flex-col gap-8 lg:flex-row"
             >
-              <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-gray-50">
+              <div className="relative rounded-xl aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-gray-50">
                 <Image
                   src={article.image}
                   alt=""
