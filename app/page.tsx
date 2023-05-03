@@ -5,7 +5,7 @@ import { poems } from "@/poems";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <Container className="pt-16 pb-24">
       <HeroPattern />
@@ -18,7 +18,7 @@ export default function Home() {
           <div
             key={poem.name}
             className={twMerge(
-              "group relative p-6 focus-within:outline-2 rounded-xl",
+              "group relative p-6 focus-within:outline focus-within:outline-2 rounded-3xl",
               poem.classNames.focusWithin,
               poem.classNames.background
             )}

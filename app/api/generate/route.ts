@@ -30,6 +30,15 @@ export async function POST(request: NextRequest) {
       docs: [user],
     } = await query;
 
+    if (user.data().credits === 0) {
+      return;
+    }
+
+    const credits =
+      user.data().credits === "Unlimited"
+        ? "Unlimited"
+        : (user.data().credits ?? 5) - 1;
+
     const poem: Poem = {
       options,
       response,
@@ -40,6 +49,7 @@ export async function POST(request: NextRequest) {
       .collection("users")
       .doc(user.id)
       .update({
+        credits,
         poems: FieldValue.arrayUnion(poem),
       });
   };

@@ -30,7 +30,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function Article({
+export default async function ArticlePage({
   params,
 }: {
   params: {

@@ -22,13 +22,7 @@ import { LogIn } from "./LogIn";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const popularPoems = [
-  "Acrostic Poem",
-  "Haiku",
-  "Limerick",
-  "Sonnet",
-  "Villanelle",
-]
+const popularPoems = ["Couplet", "Haiku", "Limerick", "Sonnet", "Villanelle"]
   .map((type) => poems.find((poem) => poem.name === type))
   .filter((poem): poem is TypeOfPoem => poem !== undefined);
 
@@ -136,9 +130,22 @@ export function Header() {
                     <Menu.Item>
                       {({ active }) => (
                         <Link
+                          href="/credits"
+                          className={twMerge(
+                            active ? "bg-gray-50" : "",
+                            "block w-full text-left px-4 py-2 text-sm text-gray-700"
+                          )}
+                        >
+                          Buy credits
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
                           href="/saved"
                           className={twMerge(
-                            active ? "bg-gray-100" : "",
+                            active ? "bg-gray-50" : "",
                             "block w-full text-left px-4 py-2 text-sm text-gray-700"
                           )}
                         >
@@ -152,7 +159,7 @@ export function Header() {
                           type="button"
                           onClick={() => signOut()}
                           className={twMerge(
-                            active ? "bg-gray-100" : "",
+                            active ? "bg-gray-50" : "",
                             "block w-full text-left px-4 py-2 text-sm text-gray-700"
                           )}
                         >
@@ -247,6 +254,12 @@ export function Header() {
                     <div className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900">
                       {session.user?.name ?? "Logged in"}
                     </div>
+                    <Link
+                      href="/credits"
+                      className="-mx-3 block text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Buy credits
+                    </Link>
                     <Link
                       href="/saved"
                       className="-mx-3 block text-left rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"

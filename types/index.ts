@@ -10,3 +10,11 @@ export type Poem = {
   response: string;
   createdAt: number;
 };
+
+export type User = {
+  id: string;
+  email: string;
+  name: string;
+  poems?: Poem[];
+  credits?: number | "Unlimited";
+};

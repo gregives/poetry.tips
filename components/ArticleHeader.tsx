@@ -15,14 +15,14 @@ export type Metadata = {
 export function ArticleHeader({ metadata }: { metadata: Metadata }) {
   return (
     <>
-      <div className="relative w-full rounded-xl aspect-[16/9] sm:aspect-[2/1] mb-8 bg-gray-50">
+      <div className="relative w-full rounded-3xl aspect-[16/9] sm:aspect-[2/1] mb-8 bg-gray-50">
         <Image
           src={metadata.image}
           alt=""
           fill
-          className="object-cover rounded-xl"
+          className="object-cover rounded-3xl"
         />
-        <div className="absolute inset-0 rounded-xl shadow-inner bg-gradient-to-br from-white/20" />
+        <div className="absolute inset-0 rounded-3xl shadow-inner bg-gradient-to-br from-white/20" />
       </div>
       <div className="flex flex-wrap items-center">
         <time
