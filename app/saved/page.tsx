@@ -9,7 +9,7 @@ import { Poem } from "@/types";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-export default async function Generate() {
+export default async function SavedPage() {
   const session = await getServerSession();
   const email = session?.user?.email;
 
@@ -30,19 +30,30 @@ export default async function Generate() {
   return (
     <Container className="pt-16 pb-24">
       <div className="fixed inset-[-50%] -z-10 bg-gray-100" />
-      <HeroPattern className="bg-gradient-to-br from-gray-50 to-gray-100" />
-      <h1 className="text-3xl/snug sm:text-4xl/snug font-bold tracking-tight mb-8 sm:mb-16">
-        Generated Poems
+      <HeroPattern className="bg-gradient-to-br from-blue-50 to-blue-100" />
+      <h1 className="text-3xl/snug sm:text-4xl/snug font-bold tracking-tight mb-4">
+        Generated poems
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 peer">
-        <PoemResult />
+      {savedPoems.length > 0 && (
+        <p>
+          Here’s all the poems that you’ve generated.{" "}
+          <Link
+            href="/"
+            className="text-blue-600 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
+          >
+            Generate another?
+          </Link>
+        </p>
+      )}
+      <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 peer">
+        <PoemResult redirect={user.data().credits === 0} />
         {savedPoems
           .sort((a, b) => b.createdAt - a.createdAt)
           .map((savedPoem) => (
             <PoemCard key={savedPoem.response}>{savedPoem.response}</PoemCard>
           ))}
       </div>
-      <div className="relative hidden peer-empty:block text-center rounded-xl px-6 py-12 border-2 border-dashed border-gray-300 hover:border-gray-400">
+      <div className="relative hidden peer-empty:block text-center rounded-3xl px-6 py-12 border-2 border-dashed border-gray-300 hover:border-gray-400">
         <h3 className="text-lg sm:text-xl font-semibold text-gray-900">
           No poems
         </h3>

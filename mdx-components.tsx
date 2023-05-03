@@ -52,7 +52,7 @@ export function ListItem(properties: JSX.IntrinsicElements["li"]) {
 
 export function Pre(properties: JSX.IntrinsicElements["pre"]) {
   return (
-    <div className="bg-gray-100 rounded-xl p-6 whitespace-pre-line">
+    <div className="bg-gray-100 rounded-3xl p-6 whitespace-pre-line">
       {properties.children}
     </div>
   );

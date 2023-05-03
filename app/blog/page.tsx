@@ -4,7 +4,7 @@ import { Container } from "@/components/Container";
 import { HeroPattern } from "@/components/HeroPattern";
 import Image from "next/image";
 
-export default async function Blog() {
+export default async function BlogPage() {
   const articles = (
     await Promise.all(slugs.map((slug) => import(`@/blog/${slug}.mdx`)))
   )
@@ -27,14 +27,14 @@ export default async function Blog() {
               key={article.slug}
               className="relative isolate flex flex-col gap-8 lg:flex-row"
             >
-              <div className="relative rounded-xl aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-gray-50">
+              <div className="relative rounded-3xl aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0 bg-gray-50">
                 <Image
                   src={article.image}
                   alt=""
                   fill
-                  className="rounded-xl object-cover"
+                  className="rounded-3xl object-cover"
                 />
-                <div className="absolute inset-0 rounded-xl shadow-inner bg-gradient-to-br from-white/20" />
+                <div className="absolute inset-0 rounded-3xl shadow-inner bg-gradient-to-br from-white/20" />
               </div>
               <div>
                 <div className="flex flex-wrap items-center text-xs">

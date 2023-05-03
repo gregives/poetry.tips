@@ -6,7 +6,7 @@ import { PoemCard } from "./PoemCard";
 
 const textDecoder = new TextDecoder();
 
-export function PoemResult() {
+export function PoemResult({ redirect }: { redirect: boolean }) {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -16,10 +16,16 @@ export function PoemResult() {
   const router = useRouter();
 
   useEffect(() => {
+    if (redirect) {
+      router.replace("/credits");
+    }
+  }, [redirect, router]);
+
+  useEffect(() => {
     (async () => {
       const options = localStorage.getItem("options");
 
-      if (options === null || generate !== "true") {
+      if (options === null || generate !== "true" || redirect) {
         return;
       }
 
@@ -51,9 +57,9 @@ export function PoemResult() {
       setLoading(false);
       router.replace("/saved");
     })();
-  }, [generate, router]);
+  }, [generate, redirect, router]);
 
-  if (generate !== "true") {
+  if (generate !== "true" || redirect) {
     return null;
   }
 
