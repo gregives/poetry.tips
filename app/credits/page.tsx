@@ -17,8 +17,8 @@ type Tier = {
 const callback =
   process.env.VERCEL_ENV === "preview" &&
   typeof process.env.VERCEL_GIT_COMMIT_REF === "string"
-    ? `https://poetry-tips-git-${process.env.VERCEL_GIT_COMMIT_REF}-gregives.vercel.app/credits`
-    : "https://www.poetry.tips/credits";
+    ? `https://poetry-tips-git-${process.env.VERCEL_GIT_COMMIT_REF}-gregives.vercel.app/generate`
+    : "https://www.poetry.tips/generate";
 
 export default async function CreditsPage() {
   const session = await getServerSession();

@@ -8,6 +8,7 @@ const textDecoder = new TextDecoder();
 
 export function PoemResult() {
   const [result, setResult] = useState("");
+  const [visible, setVisible] = useState(true);
   const [loading, setLoading] = useState(true);
 
   const searchParams = useSearchParams();
@@ -20,6 +21,9 @@ export function PoemResult() {
       const options = localStorage.getItem("options");
 
       if (options === null || generate !== "true") {
+        // Hide the poem result as soon as possible
+        setVisible(false);
+        router.replace("/saved");
         return;
       }
 
@@ -54,7 +58,7 @@ export function PoemResult() {
     })();
   }, [generate, router]);
 
-  if (generate !== "true") {
+  if (generate !== "true" || !visible) {
     return null;
   }
 
