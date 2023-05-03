@@ -34,7 +34,7 @@ export function PoemGenerator({
     localStorage.setItem("options", JSON.stringify(options));
 
     if (session) {
-      router.push("/saved?generate=true");
+      router.push("/generate");
     } else {
       setLogInOpen(true);
     }
@@ -110,12 +110,13 @@ export function PoemGenerator({
           poem.classNames.focusVisible
         )}
       >
-        Generate poem
+        Generate poem{" "}
+        {session && <span className="font-normal opacity-80">(1 credit)</span>}
       </button>
       <LogIn
         open={logInOpen}
         onClose={() => setLogInOpen(false)}
-        callbackUrl="/saved?generate=true"
+        callbackUrl="/generate"
       />
     </form>
   );

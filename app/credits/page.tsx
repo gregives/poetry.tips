@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "@/utilities/getServerSession";
 import { twMerge } from "tailwind-merge";
 import { products, stripe } from "@/utilities/stripe";
+import Link from "next/link";
 
 type Tier = {
   name: string;
@@ -83,11 +84,19 @@ export default async function CreditsPage() {
           : `You’ve got ${credits.toString().toLowerCase()} credits`}
       </h1>
       <p>
-        {credits === 0
-          ? "If you want to generate any more poems, you’ll need to buy some more credits below."
-          : credits === "Unlimited"
-          ? "You can’t get more than unlimited credits but feel free to try!"
-          : "Want to buy some more?"}
+        {credits !== 0 ? (
+          <>
+            <Link
+              href="/"
+              className="text-green-600 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
+            >
+              Why not generate a poem?
+            </Link>{" "}
+            {credits !== "Unlimited" && "Or top your credits up below."}
+          </>
+        ) : (
+          "If you want to generate any more poems, you’ll need to buy some more credits below."
+        )}
       </p>
       <div className="mt-8 sm:mt-12 isolate mx-auto grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
         {tiers.map((tier, index) => (

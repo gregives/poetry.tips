@@ -30,6 +30,10 @@ export async function POST(request: NextRequest) {
       docs: [user],
     } = await query;
 
+    if (user.data().credits === 0) {
+      return;
+    }
+
     const credits =
       user.data().credits === "Unlimited"
         ? "Unlimited"

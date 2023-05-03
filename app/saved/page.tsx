@@ -46,7 +46,7 @@ export default async function SavedPage() {
         </p>
       )}
       <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 peer">
-        <PoemResult redirect={user.data().credits === 0} />
+        {user.data().credits !== 0 && <PoemResult />}
         {savedPoems
           .sort((a, b) => b.createdAt - a.createdAt)
           .map((savedPoem) => (
