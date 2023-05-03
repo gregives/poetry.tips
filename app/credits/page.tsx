@@ -146,5 +146,3 @@ export default async function CreditsPage() {
     </Container>
   );
 }
-
-export const runtime = "edge";

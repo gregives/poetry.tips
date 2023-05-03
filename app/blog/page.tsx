@@ -77,5 +77,3 @@ export default async function BlogPage() {
     </Container>
   );
 }
-
-export const runtime = "edge";

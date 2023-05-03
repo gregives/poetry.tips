@@ -74,5 +74,3 @@ export default function PoemPage({
     </Container>
   );
 }
-
-export const runtime = "edge";

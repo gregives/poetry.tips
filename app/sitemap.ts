@@ -31,5 +31,3 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 }
-
-export const runtime = "edge";
