@@ -26,6 +26,10 @@ export type OpenAIStreamPayload = {
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
 
+if (process.env.OPENAI_API_KEY === undefined) {
+  throw new Error("Missing OpenAI environment variables");
+}
+
 export async function createOpenAIStream(
   payload: OpenAIStreamPayload,
   callback?: (response: string) => Promise<void>
