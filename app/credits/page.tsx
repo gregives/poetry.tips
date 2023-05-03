@@ -4,7 +4,7 @@ import { firestore } from "@/utilities/firestore";
 import { redirect } from "next/navigation";
 import { getServerSession } from "@/utilities/getServerSession";
 import { twMerge } from "tailwind-merge";
-import { products, stripe } from "@/utilities/stripe";
+import { stripe } from "@/utilities/stripe";
 import Link from "next/link";
 
 type Tier = {
@@ -28,11 +28,11 @@ export default async function CreditsPage() {
     redirect("/");
   }
 
+  const { data: products } = await stripe.products.list();
+
   const tiers = (
     await Promise.all(
-      products.map(async (productId) => {
-        const product = await stripe.products.retrieve(productId);
-
+      products.map(async (product) => {
         if (typeof product.default_price !== "string") {
           return;
         }
@@ -64,7 +64,9 @@ export default async function CreditsPage() {
         };
       })
     )
-  ).filter((tier): tier is Tier => tier !== undefined);
+  )
+    .filter((tier): tier is Tier => tier !== undefined)
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   const {
     docs: [user],
