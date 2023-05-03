@@ -26,3 +26,5 @@ export async function GET() {
     redirect("/saved?generate=true");
   }
 }
+
+export const runtime = "edge";

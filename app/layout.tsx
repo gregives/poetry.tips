@@ -33,3 +33,5 @@ export default async function RootLayout({
     </SessionProvider>
   );
 }
+
+export const runtime = "edge";

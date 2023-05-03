@@ -74,3 +74,5 @@ export default async function SavedPage() {
     </Container>
   );
 }
+
+export const runtime = "edge";

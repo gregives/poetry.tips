@@ -55,3 +55,5 @@ export default async function ArticlePage({
     notFound();
   }
 }
+
+export const runtime = "edge";

@@ -59,3 +59,5 @@ export default function HomePage() {
     </Container>
   );
 }
+
+export const runtime = "edge";
