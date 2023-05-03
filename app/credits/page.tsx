@@ -14,11 +14,11 @@ type Tier = {
   price: string;
 };
 
-const callback =
+const origin =
   process.env.VERCEL_ENV === "preview" &&
   typeof process.env.VERCEL_GIT_COMMIT_REF === "string"
-    ? `https://poetry-tips-git-${process.env.VERCEL_GIT_COMMIT_REF}-gregives.vercel.app/generate`
-    : "https://www.poetry.tips/generate";
+    ? `https://poetry-tips-git-${process.env.VERCEL_GIT_COMMIT_REF}-gregives.vercel.app`
+    : "https://www.poetry.tips";
 
 export default async function CreditsPage() {
   const session = await getServerSession();
@@ -41,8 +41,8 @@ export default async function CreditsPage() {
 
         const { url: href } = await stripe.checkout.sessions.create({
           customer_email: email,
-          success_url: callback,
-          cancel_url: callback,
+          success_url: `${origin}/generate`,
+          cancel_url: `${origin}/credits`,
           line_items: [
             {
               price: price.id,
