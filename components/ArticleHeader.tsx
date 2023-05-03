@@ -15,7 +15,7 @@ export type Metadata = {
 export function ArticleHeader({ metadata }: { metadata: Metadata }) {
   return (
     <>
-      <div className="relative w-full aspect-[16/9] sm:aspect-[2/1] mb-8 bg-gray-50">
+      <div className="relative w-full rounded-xl aspect-[16/9] sm:aspect-[2/1] mb-8 bg-gray-50">
         <Image
           src={metadata.image}
           alt=""

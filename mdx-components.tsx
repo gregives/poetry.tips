@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import { PoemCard } from "@/components/PoemCard";
 
 export function Anchor(properties: JSX.IntrinsicElements["a"]) {
   return (
@@ -49,6 +50,18 @@ export function ListItem(properties: JSX.IntrinsicElements["li"]) {
   return <li className="pl-1 ml-4" {...properties} />;
 }
 
+export function Pre(properties: JSX.IntrinsicElements["pre"]) {
+  return (
+    <div className="bg-gray-100 rounded-xl p-6 whitespace-pre-line">
+      {properties.children}
+    </div>
+  );
+}
+
+export function Div(properties: JSX.IntrinsicElements["code"]) {
+  return <div>{properties.children}</div>;
+}
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     a: Anchor,
@@ -59,6 +72,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ol: OrderedList,
     ul: UnorderedList,
     li: ListItem,
+    pre: Pre,
+    code: Div,
     ...components,
   };
 }
