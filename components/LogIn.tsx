@@ -1,8 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { GiftIcon } from "@heroicons/react/24/outline";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
+import { useForm } from "react-hook-form";
 
 type LogInProperties = {
   open: boolean;
@@ -11,6 +12,18 @@ type LogInProperties = {
 };
 
 export function LogIn({ open, onClose, callbackUrl }: LogInProperties) {
+  const [emailSent, setEmailSent] = useState(false);
+  const { handleSubmit, register } = useForm();
+
+  const signInWithEmail = handleSubmit(async ({ email }) => {
+    await signIn("email", {
+      email,
+      callbackUrl,
+      redirect: false,
+    });
+    setEmailSent(true);
+  });
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={onClose}>
@@ -38,9 +51,9 @@ export function LogIn({ open, onClose, callbackUrl }: LogInProperties) {
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-3xl bg-white px-6 pb-6 pt-8 text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-sm sm:p-6">
                 <div>
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100">
                     <GiftIcon
-                      className="h-6 w-6 text-green-600"
+                      className="h-6 w-6 text-blue-600"
                       aria-hidden="true"
                     />
                   </div>
@@ -59,7 +72,32 @@ export function LogIn({ open, onClose, callbackUrl }: LogInProperties) {
                     </div>
                   </div>
                 </div>
-                <div className="mt-8 space-y-4">
+                <div className="mt-8 space-y-8">
+                  <form onSubmit={signInWithEmail} className="space-y-4">
+                    <label htmlFor="email" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      className="block w-full rounded-xl border-0 py-3 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800 disabled:opacity-60"
+                      placeholder="Email address"
+                      required
+                      disabled={emailSent}
+                      {...register("email", {
+                        required: true,
+                      })}
+                    />
+                    {emailSent ? (
+                      <div className="flex w-full justify-center items-center rounded-xl ring-1 ring-indigo-100 py-3 px-4 font-medium text-blue-600 cursor-not-allowed">
+                        Check your email
+                      </div>
+                    ) : (
+                      <button className="flex w-full justify-center items-center rounded-xl bg-gradient-to-br from-indigo-50 to-indigo-100 py-3 px-4 font-medium hover:from-indigo-100 hover:to-indigo-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800">
+                        Log in with email
+                      </button>
+                    )}
+                  </form>
                   <button
                     type="button"
                     className="flex w-full justify-center items-center rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 py-3 px-4 font-medium hover:from-gray-100 hover:to-gray-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800"
