@@ -20,12 +20,12 @@ async function sendVerificationRequest({
   provider,
 }: SendVerificationRequestParams) {
   const { host } = new URL(url);
-  const escapedHost = host.replace(/\./g, "&#8203;.");
+  const escapedHost = host.replace(/^www\./, "").replace(/\./g, "&#8203;.");
 
   const transport = createTransport(provider.server);
   const result = await transport.sendMail({
     to: identifier,
-    from: '"poetry.tips" <contact@poetry.tips>',
+    from: '"Poetry Tips" <contact@poetry.tips>',
     subject: `Log in to ${host}`,
     text: `Click the link below to log in to ${host}\n\n${url}\n\n`,
     html: `<body>Click the link below to log in to ${escapedHost}<br/><br/><a href="${url}">Log in to ${escapedHost}</a><br/><br/></body>`,

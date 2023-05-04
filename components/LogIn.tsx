@@ -4,6 +4,7 @@ import { GiftIcon } from "@heroicons/react/24/outline";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
+import { Loading } from "./Loading";
 
 type LogInProperties = {
   open: boolean;
@@ -13,16 +14,29 @@ type LogInProperties = {
 
 export function LogIn({ open, onClose, callbackUrl }: LogInProperties) {
   const [emailSent, setEmailSent] = useState(false);
+  const [emailLoading, setEmailLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
+
   const { handleSubmit, register } = useForm();
 
   const signInWithEmail = handleSubmit(async ({ email }) => {
+    setEmailLoading(true);
     await signIn("email", {
       email,
       callbackUrl,
       redirect: false,
     });
+    setEmailLoading(false);
     setEmailSent(true);
   });
+
+  const signInWithGoogle = async () => {
+    setGoogleLoading(true);
+    await signIn("google", {
+      callbackUrl,
+    });
+    setGoogleLoading(false);
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -89,36 +103,37 @@ export function LogIn({ open, onClose, callbackUrl }: LogInProperties) {
                       })}
                     />
                     {emailSent ? (
-                      <div className="flex w-full justify-center items-center rounded-xl ring-1 ring-indigo-100 py-3 px-4 font-medium text-blue-600 cursor-not-allowed">
+                      <div className="flex w-full justify-center items-center space-x-4 rounded-xl ring-1 ring-indigo-100 py-3 px-4 font-medium text-blue-600 cursor-not-allowed">
                         Check your email
                       </div>
                     ) : (
-                      <button className="flex w-full justify-center items-center rounded-xl bg-gradient-to-br from-indigo-50 to-indigo-100 py-3 px-4 font-medium hover:from-indigo-100 hover:to-indigo-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800">
-                        Log in with email
+                      <button className="flex w-full justify-center items-center space-x-4 rounded-xl bg-gradient-to-br from-indigo-50 to-indigo-100 py-3 px-4 font-medium hover:from-indigo-100 hover:to-indigo-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800">
+                        {emailLoading && <Loading />}
+                        <span>Log in with email</span>
                       </button>
                     )}
                   </form>
                   <button
                     type="button"
-                    className="flex w-full justify-center items-center rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 py-3 px-4 font-medium hover:from-gray-100 hover:to-gray-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800"
-                    onClick={() =>
-                      signIn("google", {
-                        callbackUrl,
-                      })
-                    }
+                    className="flex w-full justify-center items-center space-x-4 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 py-3 px-4 font-medium hover:from-gray-100 hover:to-gray-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800"
+                    onClick={signInWithGoogle}
                   >
-                    <Image
-                      alt=""
-                      src="https://authjs.dev/img/providers/google.svg"
-                      className="w-4 h-4 mr-4"
-                      width={32}
-                      height={32}
-                    />
-                    Log in with Google
+                    {googleLoading ? (
+                      <Loading />
+                    ) : (
+                      <Image
+                        alt=""
+                        src="https://authjs.dev/img/providers/google.svg"
+                        className="w-4 h-4"
+                        width={16}
+                        height={16}
+                      />
+                    )}
+                    <span>Log in with Google</span>
                   </button>
                   <button
                     type="button"
-                    className="flex w-full justify-center items-center rounded-xl py-3 px-4 font-medium ring-1 ring-gray-100 hover:ring-gray-200 focus-visible:ring-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800"
+                    className="flex w-full justify-center items-center space-x-4 rounded-xl py-3 px-4 font-medium ring-1 ring-gray-100 hover:ring-gray-200 focus-visible:ring-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800"
                     onClick={onClose}
                   >
                     Cancel
