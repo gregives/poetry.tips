@@ -53,7 +53,8 @@ export function LogIn({ open, onClose, callbackUrl }: LogInProperties) {
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        Create a free account to generate your poem.
+                        Create a free account to generate 5 poems for free. Get
+                        started today.
                       </p>
                     </div>
                   </div>

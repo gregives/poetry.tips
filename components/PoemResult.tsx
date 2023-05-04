@@ -3,6 +3,7 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { PoemCard } from "./PoemCard";
+import { Options } from "@/types";
 
 const textDecoder = new TextDecoder();
 
@@ -10,6 +11,7 @@ export function PoemResult() {
   const [result, setResult] = useState("");
   const [visible, setVisible] = useState(true);
   const [loading, setLoading] = useState(true);
+  const [options, setOptions] = useState<Options>();
 
   const searchParams = useSearchParams();
   const generate = searchParams.get("generate");
@@ -25,6 +27,8 @@ export function PoemResult() {
         setVisible(false);
         router.replace("/saved");
         return;
+      } else {
+        setOptions(JSON.parse(options));
       }
 
       const response = await fetch("/api/generate", {
@@ -63,7 +67,13 @@ export function PoemResult() {
   }
 
   return (
-    <PoemCard>
+    <PoemCard
+      poem={{
+        options,
+        response: result,
+        createdAt: Date.now(),
+      }}
+    >
       {result}
       {loading && (
         <span className="text-gray-300 animate-blink">{"\u258C"}</span>
