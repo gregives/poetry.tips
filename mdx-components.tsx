@@ -12,7 +12,7 @@ export function Anchor(properties: JSX.IntrinsicElements["a"]) {
 export function Heading1(properties: JSX.IntrinsicElements["h1"]) {
   return (
     <h1
-      className="lg:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-gray-800 my-16 sm:mb-24 lg:-mx-24"
+      className="lg:text-center text-4xl/snug sm:text-5xl/snug md:text-6xl/snug font-bold tracking-tight text-gray-800 mb-8 sm:mb-16 lg:-mx-24"
       {...properties}
     />
   );
