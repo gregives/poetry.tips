@@ -1,5 +1,4 @@
 import type { MDXComponents } from "mdx/types";
-import { PoemCard } from "@/components/PoemCard";
 
 export function Anchor(properties: JSX.IntrinsicElements["a"]) {
   return (

@@ -50,7 +50,9 @@ export default async function SavedPage() {
         {savedPoems
           .sort((a, b) => b.createdAt - a.createdAt)
           .map((savedPoem) => (
-            <PoemCard key={savedPoem.response}>{savedPoem.response}</PoemCard>
+            <PoemCard key={savedPoem.response} poem={savedPoem}>
+              {savedPoem.response}
+            </PoemCard>
           ))}
       </div>
       <div className="relative hidden peer-empty:block text-center rounded-3xl px-6 py-12 border-2 border-dashed border-gray-300 hover:border-gray-400">
