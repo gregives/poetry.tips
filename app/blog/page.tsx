@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default async function BlogPage() {
   const articles = (
-    await Promise.all(slugs.map((slug) => import(`@/blog/${slug}.mdx`)))
+    await Promise.all(slugs.map((slug) => import(`@/markdown/${slug}.mdx`)))
   )
     .map<Metadata>(({ metadata }, index) => ({
       ...metadata,
