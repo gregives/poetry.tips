@@ -8,15 +8,16 @@ import { useSession } from "next-auth/react";
 import { LogIn } from "./LogIn";
 import { useRouter } from "next/navigation";
 import { Options } from "@/types";
+import { Loading } from "./Loading";
 
 export function PoemGenerator({
   type,
 }: {
   type?: (typeof poems)[number]["name"];
 }) {
-  const poem = poems.find((poem) => poem.name === type) ?? poems[0];
-
+  const [generating, setGenerating] = useState(false);
   const [logInOpen, setLogInOpen] = useState(false);
+
   const { data: session } = useSession();
   const router = useRouter();
 
@@ -34,11 +35,14 @@ export function PoemGenerator({
     localStorage.setItem("options", JSON.stringify(options));
 
     if (session) {
+      setGenerating(true);
       router.push("/generate");
     } else {
       setLogInOpen(true);
     }
   });
+
+  const poem = poems.find((poem) => poem.name === type) ?? poems[0];
 
   return (
     <form className="mx-auto max-w-4xl space-y-8" onSubmit={generatePoem}>
@@ -104,14 +108,19 @@ export function PoemGenerator({
       </div>
       <button
         className={twMerge(
-          "block w-full rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:brightness-95 hover:saturate-150",
+          "flex w-full justify-center items-center space-x-4 rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:brightness-95 hover:saturate-150",
           poem.classNames.background,
           poem.classNames.title,
           poem.classNames.focusVisible
         )}
       >
-        Generate poem{" "}
-        {session && <span className="font-normal opacity-80">(1 credit)</span>}
+        {generating && <Loading />}
+        <span>
+          Generate poem{" "}
+          {session && (
+            <span className="font-normal opacity-80">(1 credit)</span>
+          )}
+        </span>
       </button>
       <LogIn
         open={logInOpen}
