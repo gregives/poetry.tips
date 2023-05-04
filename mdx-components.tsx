@@ -3,7 +3,7 @@ import type { MDXComponents } from "mdx/types";
 export function Anchor(properties: JSX.IntrinsicElements["a"]) {
   return (
     <a
-      className="underline underline-offset-2 font-medium rounded-lg -m-1 p-1 focus:outline-none focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-gray-800"
+      className="underline underline-offset-2 rounded-lg -m-1 p-1 focus:outline-none focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-gray-800"
       {...properties}
     />
   );

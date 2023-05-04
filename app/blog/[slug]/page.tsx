@@ -11,7 +11,7 @@ export async function generateMetadata({
   };
 }) {
   try {
-    const { metadata } = await import(`@/blog/${params.slug}.mdx`);
+    const { metadata } = await import(`@/markdown/${params.slug}.mdx`);
 
     return {
       title: metadata.title,
@@ -39,7 +39,7 @@ export default async function ArticlePage({
 }) {
   try {
     const { default: Content, metadata } = await import(
-      `@/blog/${params.slug}.mdx`
+      `@/markdown/${params.slug}.mdx`
     );
 
     return (
