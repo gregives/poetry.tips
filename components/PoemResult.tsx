@@ -26,9 +26,9 @@ export function PoemResult() {
         setVisible(false);
         router.replace("/saved");
         return;
-      } else {
-        setOptions(JSON.parse(options));
       }
+
+      setOptions(JSON.parse(options));
 
       const response = await fetch("/api/check", {
         method: "POST",
@@ -66,13 +66,12 @@ export function PoemResult() {
             response: previous,
             createdAt: Date.now(),
           }),
-        }).then(() => {
-          router.replace("/saved");
         });
 
         return previous;
       });
 
+      window.history.replaceState(null, document.title, "/saved");
       localStorage.removeItem("options");
       setLoading(false);
     })();
