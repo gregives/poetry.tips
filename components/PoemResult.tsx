@@ -13,10 +13,9 @@ export function PoemResult() {
   const [loading, setLoading] = useState(true);
   const [options, setOptions] = useState<Options>();
 
+  const router = useRouter();
   const searchParams = useSearchParams();
   const generate = searchParams.get("generate");
-
-  const router = useRouter();
 
   useEffect(() => {
     (async () => {
@@ -31,7 +30,7 @@ export function PoemResult() {
         setOptions(JSON.parse(options));
       }
 
-      const response = await fetch("/api/generate", {
+      const response = await fetch("/api/check", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,9 +55,26 @@ export function PoemResult() {
         setResult((previous) => previous + chunk);
       }
 
+      setResult((previous) => {
+        fetch("/api/save", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            options: JSON.parse(options),
+            response: previous,
+            createdAt: Date.now(),
+          }),
+        }).then(() => {
+          router.replace("/saved");
+        });
+
+        return previous;
+      });
+
       localStorage.removeItem("options");
       setLoading(false);
-      router.replace("/saved");
     })();
   }, [generate, router]);
 

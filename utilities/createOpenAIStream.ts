@@ -30,10 +30,7 @@ if (process.env.OPENAI_API_KEY === undefined) {
   throw new Error("Missing OpenAI environment variables");
 }
 
-export async function createOpenAIStream(
-  payload: OpenAIStreamPayload,
-  callback?: (response: string) => Promise<void>
-) {
+export async function createOpenAIStream(payload: OpenAIStreamPayload) {
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     headers: {
       "Content-Type": "application/json",
@@ -44,7 +41,6 @@ export async function createOpenAIStream(
   });
 
   let counter = 0;
-  let completeResponse = "";
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -54,12 +50,7 @@ export async function createOpenAIStream(
 
           // https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream
           if (data === "[DONE]") {
-            if (typeof callback === "function") {
-              callback(completeResponse).then(() => controller.close());
-            } else {
-              controller.close();
-            }
-
+            controller.close();
             return;
           }
 
@@ -75,7 +66,6 @@ export async function createOpenAIStream(
             const queue = textEncoder.encode(text);
             controller.enqueue(queue);
             counter++;
-            completeResponse += text;
           } catch (error) {
             // Maybe parse error
             controller.error(error);
