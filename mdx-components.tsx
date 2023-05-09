@@ -38,15 +38,25 @@ export function Paragraph(properties: JSX.IntrinsicElements["p"]) {
 }
 
 export function OrderedList(properties: JSX.IntrinsicElements["ol"]) {
-  return <ul className="leading-8 list-decimal" {...properties} />;
+  return (
+    <ol
+      className="leading-8 list-decimal marker:tracking-tighter"
+      {...properties}
+    />
+  );
 }
 
 export function UnorderedList(properties: JSX.IntrinsicElements["ul"]) {
-  return <ul className="leading-8 list-disc" {...properties} />;
+  return (
+    <ul
+      className="leading-8 list-disc marker:tracking-tighter"
+      {...properties}
+    />
+  );
 }
 
 export function ListItem(properties: JSX.IntrinsicElements["li"]) {
-  return <li className="pl-1 ml-4" {...properties} />;
+  return <li className="pl-1 ml-5 mb-2" {...properties} />;
 }
 
 export function Pre(properties: JSX.IntrinsicElements["pre"]) {
