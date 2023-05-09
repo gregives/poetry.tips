@@ -48,26 +48,46 @@ export default function PoemPage({
         </div>
         <div className="pt-8 lg:grid lg:grid-cols-3 lg:gap-8">
           <dt className="text-base font-semibold leading-7 text-gray-900 lg:col-span-1">
-            Example of {poem.indefiniteArticle} {poem.name.toLowerCase()}
+            How do you write {poem.indefiniteArticle} {poem.name.toLowerCase()}?
           </dt>
           <dd className="mt-4 lg:col-span-2 lg:mt-0">
-            <p className="text-base leading-7 text-gray-600 whitespace-pre-line">
-              {poem.example}
+            <p className="text-base leading-7 text-gray-600 mb-4">
+              Here are the steps to write write {poem.indefiniteArticle}{" "}
+              {poem.name.toLowerCase()}:
             </p>
+            <ol className="list-decimal text-base leading-7 text-gray-600 marker:tracking-tighter">
+              {poem.steps.map((step) => {
+                const summaryPosition = step.indexOf(":");
+                const [summary, complete] = [
+                  step.substring(0, summaryPosition),
+                  step.substring(summaryPosition + 1),
+                ];
+                return (
+                  <li key={step} className="pl-1 ml-5 mb-2">
+                    <strong className="font-semibold">{summary}:</strong>
+                    {complete}
+                  </li>
+                );
+              })}
+            </ol>
           </dd>
         </div>
         <div className="pt-8 lg:grid lg:grid-cols-3 lg:gap-8">
           <dt className="text-base font-semibold leading-7 text-gray-900 lg:col-span-1">
-            How do you write {poem.indefiniteArticle} {poem.name.toLowerCase()}?
+            Example of {poem.indefiniteArticle} {poem.name.toLowerCase()}
           </dt>
           <dd className="mt-4 lg:col-span-2 lg:mt-0">
-            <ol className="list-decimal text-base leading-8 text-gray-600">
-              {poem.steps.map((step) => (
-                <li key={step} className="pl-1 ml-4">
-                  {step}
-                </li>
-              ))}
-            </ol>
+            <blockquote className="relative text-base leading-7 text-gray-600 whitespace-pre">
+              <div
+                className={twMerge(
+                  "inline-block",
+                  poem.name === "Diamante" && "text-center"
+                )}
+              >
+                {poem.example.text}
+              </div>
+            </blockquote>
+            <p className="mt-16 uppercase text-sm">{poem.example.author}</p>
           </dd>
         </div>
       </dl>

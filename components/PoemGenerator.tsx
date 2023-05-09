@@ -1,7 +1,7 @@
 "use client";
 
 import { poems } from "@/poems";
-import { useId, useState } from "react";
+import { useId, useLayoutEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useForm } from "react-hook-form";
 import { useSession } from "next-auth/react";
@@ -17,12 +17,14 @@ export function PoemGenerator({
 }) {
   const [generating, setGenerating] = useState(false);
   const [logInOpen, setLogInOpen] = useState(false);
+  const [textIndent, setTextIndent] = useState("152.594px");
 
   const { data: session } = useSession();
   const router = useRouter();
 
   const typeId = useId();
   const promptId = useId();
+  const promptRef = useRef<HTMLDivElement>(null);
 
   const { register, handleSubmit } = useForm<Options>({
     defaultValues: {
@@ -30,6 +32,24 @@ export function PoemGenerator({
       prompt: "",
     },
   });
+
+  const updateTextIndent = () => {
+    if (promptRef.current !== null) {
+      setTextIndent(
+        window
+          .getComputedStyle(promptRef.current, null)
+          .getPropertyValue("width")
+      );
+    }
+  };
+
+  useLayoutEffect(() => {
+    updateTextIndent();
+    window.addEventListener("resize", updateTextIndent);
+    return () => {
+      window.removeEventListener("resize", updateTextIndent);
+    };
+  }, []);
 
   const generatePoem = handleSubmit((options) => {
     localStorage.setItem("options", JSON.stringify(options));
@@ -91,15 +111,21 @@ export function PoemGenerator({
           Describe your poem
         </label>
         <div className="relative mt-4">
-          <div className="absolute left-0 top-0 py-3 px-4 text-gray-900 pointer-events-none">
-            Write a poem about
+          <div
+            ref={promptRef}
+            className="absolute left-0 top-0 pt-3 pl-4 text-gray-900 pointer-events-none box-content"
+          >
+            Write a poem about&nbsp;
           </div>
           <textarea
             rows={4}
             id={promptId}
-            className="indent-[15.25ch] block w-full rounded-xl border-0 py-3 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800 resize-none"
+            className="block w-full rounded-xl border-0 py-3 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800 resize-none"
             placeholder="a knight in shining armour"
             required
+            style={{
+              textIndent,
+            }}
             {...register("prompt", {
               required: true,
             })}
