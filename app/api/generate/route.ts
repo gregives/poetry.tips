@@ -1,20 +1,22 @@
 import { createOpenAIStream } from "@/utilities/createOpenAIStream";
 import { NextRequest, NextResponse } from "next/server";
 import { Options } from "@/types";
+import { poemTypes } from "@/poems";
 
 export async function POST(request: NextRequest) {
   const options: Options = await request.json();
+  const poemType = poemTypes.find((poemType) => poemType.name === options.type);
 
-  const content = `Write a ${
-    options.type === "Random Poem" ? "poem" : options.type.toLowerCase()
-  } about ${options.prompt}`;
+  if (poemType === undefined) {
+    throw new Error("Unrecognised poem type");
+  }
 
   const stream = await createOpenAIStream({
     model: "gpt-3.5-turbo",
     messages: [
       {
         role: "user",
-        content,
+        content: poemType.generatePrompt(options as any),
       },
     ],
     stream: true,

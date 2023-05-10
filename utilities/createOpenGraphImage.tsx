@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/server";
-import { poems } from "@/poems";
+import { poemTypes } from "@/poems";
 import { generateMetadataFromSlug } from "./generateMetadataFromSlug";
 
 // Download fonts from CDN on the Edge
@@ -14,7 +14,7 @@ const InterBold = fetch(
 type OpenGraphImageProperties = {
   title?: string;
   description?: string;
-  color?: (typeof poems)[number]["classNames"]["color"];
+  color?: (typeof poemTypes)[number]["classNames"]["color"];
 };
 
 const defaultMetadata = generateMetadataFromSlug();
@@ -22,7 +22,7 @@ const defaultMetadata = generateMetadataFromSlug();
 export async function createOpenGraphImage({
   title = defaultMetadata.title,
   description = defaultMetadata.description,
-  color = poems[0].classNames.color,
+  color = poemTypes[0].classNames.color,
 }: OpenGraphImageProperties) {
   title = title.replace(/^AI /, "");
 

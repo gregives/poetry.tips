@@ -17,14 +17,16 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { twMerge } from "tailwind-merge";
 import { Container } from "./Container";
-import { TypeOfPoem, poems } from "@/poems";
+import { poemTypesWithoutRandom } from "@/poems";
 import { LogIn } from "./LogIn";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const popularPoems = ["Couplet", "Haiku", "Limerick", "Sonnet", "Villanelle"]
-  .map((type) => poems.find((poem) => poem.name === type))
-  .filter((poem): poem is TypeOfPoem => poem !== undefined);
+const popularPoems = poemTypesWithoutRandom.filter((poemType) =>
+  ["Couplet", "Haiku", "Limerick", "Sonnet", "Villanelle"].includes(
+    poemType.name
+  )
+);
 
 export function Header() {
   const { data: session } = useSession();

@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { poems } from "@/poems";
+import { poemTypesWithoutRandom } from "@/poems";
 
 export const articles: string[] = [
   "10-reasons-why-using-a-poem-generator-can-boost-your-creativity",
@@ -20,8 +20,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://www.poetry.tips",
       lastModified: new Date(),
     },
-    ...poems.map((poem) => ({
-      url: `https://www.poetry.tips/poem/${poem.slug}`,
+    ...poemTypesWithoutRandom.map((poemType) => ({
+      url: `https://www.poetry.tips/poem/${poemType.slug}`,
       lastModified: new Date(),
     })),
     {

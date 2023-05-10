@@ -1,7 +1,7 @@
-import { poems } from "@/poems";
+import { poemTypesWithoutRandom } from "@/poems";
 
 export function generateMetadataFromSlug(slug?: string) {
-  const poem = poems.find((poem) => poem.slug === slug);
+  const poem = poemTypesWithoutRandom.find((poem) => poem.slug === slug);
   const path = poem === undefined ? "" : `/poem/${slug}`;
   const poemName = poem?.name ?? "Poem";
 
