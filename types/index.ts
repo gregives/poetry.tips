@@ -1,11 +1,13 @@
-import { poems } from "@/poems";
+import { poemTypes } from "@/poems";
+
+export type PoemType = (typeof poemTypes)[number];
 
 export type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
 
 export type Options = {
+  type: PoemType["name"];
   prompt: string;
-  type: (typeof poems)[number]["name"] | "Random Poem";
-};
+} & Partial<Record<PoemType["options"][number]["name"], string>>;
 
 export type Poem = {
   options: Options;

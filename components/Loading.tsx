@@ -6,13 +6,13 @@ export function Loading() {
       className="w-5 h-5 -m-0.5 animate-spin"
       fill="none"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       viewBox="0 0 24 24"
     >
-      <circle stroke-opacity="0.2" cx="12" cy="12" r="10.5" />
+      <circle strokeOpacity="0.2" cx="12" cy="12" r="10.5" />
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M22.5 12c0-7.42-7.42-10.5-10.5-10.5"
       />
     </svg>

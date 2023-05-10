@@ -40,7 +40,14 @@ export function PoemCard({
       className={twMerge("flex flex-col bg-white rounded-3xl", className)}
       {...properties}
     >
-      <div className="flex-1 p-6 whitespace-pre-line">{children}</div>
+      <div
+        className={twMerge(
+          "flex-1 p-6 whitespace-pre-line",
+          options?.type === "Diamante" && "text-center"
+        )}
+      >
+        {children}
+      </div>
       <div className="px-6 pb-6 pt-2 space-y-4">
         <button
           type="button"

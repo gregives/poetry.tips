@@ -1,8 +1,8 @@
-import { poems } from "@/poems";
+import { poemTypesWithoutRandom } from "@/poems";
 import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-function splitIntoFourColumns<T>(array: T[], chunks: number): T[][] {
+function splitIntoFourColumns<T>(array: T[], chunks: number = 4): T[][] {
   if (chunks < 2) return [array];
 
   let len = array.length,
@@ -25,7 +25,9 @@ function splitIntoFourColumns<T>(array: T[], chunks: number): T[][] {
   return out;
 }
 
-const [first, second, third, fourth] = splitIntoFourColumns(poems, 4);
+const [first, second, third, fourth] = splitIntoFourColumns(
+  poemTypesWithoutRandom
+);
 
 export function Footer() {
   return (
