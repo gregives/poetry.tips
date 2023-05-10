@@ -87,7 +87,9 @@ export default function PoemPage({
                 {poem.example.text}
               </div>
             </blockquote>
-            <p className="mt-16 uppercase text-sm">{poem.example.author}</p>
+            <p className="mt-16 uppercase text-sm text-gray-700">
+              <span className="text-gray-400">By</span> {poem.example.author}
+            </p>
           </dd>
         </div>
       </dl>

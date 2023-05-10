@@ -23,6 +23,9 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en" className="h-full">
+        <head>
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        </head>
         <body
           className={`h-full flex flex-col text-gray-900 ${inter.className}`}
         >
@@ -36,9 +39,25 @@ export default async function RootLayout({
           <Script id="google-analytics" strategy="afterInteractive">
             {`
               window.dataLayer = window.dataLayer || [];
-              function gtag(){window.dataLayer.push(arguments);}
+              function gtag() {
+                window.dataLayer.push(arguments);
+              }
               gtag('js', new Date());
               gtag('config', 'G-DQVQT5DW9P');
+            `}
+          </Script>
+          <Script id="favicon" strategy="afterInteractive">
+            {`
+              const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+              function updateFavicon({ matches }) {
+                if (matches) {
+                  document.querySelector('[rel="icon"]')?.setAttribute('href', '/favicon-dark.svg')
+                } else {
+                  document.querySelector('[rel="icon"]')?.setAttribute('href', '/favicon.svg')
+                }
+              }
+              updateFavicon(mediaQuery);
+              mediaQuery.addEventListener("change", updateFavicon);
             `}
           </Script>
         </body>
