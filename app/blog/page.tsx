@@ -4,6 +4,17 @@ import { Container } from "@/components/Container";
 import { HeroPattern } from "@/components/HeroPattern";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Blog",
+  // @ts-ignore
+  openGraph: {
+    title: "Blog",
+  },
+  twitter: {
+    title: "Blog",
+  },
+};
+
 export default async function BlogPage() {
   const articles = (
     await Promise.all(slugs.map((slug) => import(`@/markdown/${slug}.mdx`)))
@@ -49,7 +60,7 @@ export default async function BlogPage() {
                   {article.tags.map((tag) => (
                     <div
                       key={tag}
-                      className="rounded-lg px-2 py-1 bg-gray-50 text-gray-600 -ml-1 mr-3 mb-2"
+                      className="rounded-lg px-2 py-1 bg-gray-100 text-gray-700 -ml-1 mr-3 mb-2"
                     >
                       {tag}
                     </div>

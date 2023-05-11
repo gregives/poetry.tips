@@ -7,16 +7,16 @@ import { useForm } from "react-hook-form";
 import { useSession } from "next-auth/react";
 import { LogIn } from "./LogIn";
 import { useRouter } from "next/navigation";
-import { Options } from "@/types";
+import { Options, PoemType } from "@/types";
 import { Loading } from "./Loading";
 import { Dialog, Transition } from "@headlessui/react";
 import { QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
 
-export function PoemGenerator({
-  type,
-}: {
-  type?: (typeof poemTypes)[number]["name"];
-}) {
+type PoemGeneratorProperties = {
+  type?: PoemType["name"];
+};
+
+export function PoemGenerator({ type }: PoemGeneratorProperties) {
   const { classNames } =
     poemTypes.find((poem) => poem.name === type) ?? poemTypes[0];
 
@@ -73,7 +73,7 @@ export function PoemGenerator({
 
   return (
     <form className="mx-auto max-w-4xl space-y-8" onSubmit={generatePoem}>
-      <div>
+      <div className="relative">
         <label
           htmlFor="type"
           className="flex items-center text-sm font-medium leading-6 text-gray-900"
@@ -102,7 +102,7 @@ export function PoemGenerator({
         </select>
       </div>
       {poem.options.map((option, index) => (
-        <div key={option.name}>
+        <div key={option.name} className="relative">
           <label
             htmlFor={option.name}
             className="flex items-center text-sm font-medium leading-6 text-gray-900"
@@ -116,24 +116,25 @@ export function PoemGenerator({
               {index + 2}
             </span>
             {option.label}
-            <button
-              className="group ml-auto rounded-full focus:outline-none focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-gray-800"
-              onClick={() => {
-                setHint(option.hint);
-                setHintTitle(option.label);
-                setHintVisible(true);
-              }}
-            >
-              <span className="sr-only">Help</span>
-              <QuestionMarkCircleIcon
-                className="h-6 w-6 text-gray-300 group-hover:text-gray-500"
-                aria-hidden="true"
-              />
-            </button>
           </label>
+          <button
+            className="group absolute top-1 right-0 rounded-full focus:outline-none focus-visible:outline-2 focus:outline-gray-800"
+            onClick={() => {
+              setHint(option.hint);
+              setHintTitle(option.label);
+              setHintVisible(true);
+            }}
+          >
+            <span className="sr-only">Help with “{option.label}”</span>
+            <QuestionMarkCircleIcon
+              className="h-6 w-6 text-gray-400 group-hover:text-gray-600"
+              aria-hidden="true"
+            />
+          </button>
           <input
             id={option.name}
-            className="mt-4 block w-full rounded-xl border-0 py-3 pl-4 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800"
+            placeholder={option.placeholder}
+            className="mt-4 block w-full rounded-xl border-0 py-3 pl-4 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800"
             required
             {...register(option.name, {
               required: true,
@@ -141,7 +142,7 @@ export function PoemGenerator({
           />
         </div>
       ))}
-      <div>
+      <div className="relative">
         <label
           htmlFor="prompt"
           className="flex items-center text-sm font-medium leading-6 text-gray-900"
@@ -155,23 +156,23 @@ export function PoemGenerator({
             {poem.options.length + 2}
           </span>
           Describe your poem
-          <button
-            className="group ml-auto rounded-full focus:outline-none focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-gray-800"
-            onClick={() => {
-              setHint(
-                "Describe what you want the poem to be about. You should include the theme or subject of the poem and any relevant information you want to be included, such as the characters' backgrounds or the setting of the poem."
-              );
-              setHintTitle("Describe your poem");
-              setHintVisible(true);
-            }}
-          >
-            <span className="sr-only">Help</span>
-            <QuestionMarkCircleIcon
-              className="h-6 w-6 text-gray-300 group-hover:text-gray-500"
-              aria-hidden="true"
-            />
-          </button>
         </label>
+        <button
+          className="group absolute top-1 right-0 rounded-full focus:outline-none focus-visible:outline-2 focus:outline-gray-800"
+          onClick={() => {
+            setHint(
+              "Describe what you want the poem to be about. You should include the theme or subject of the poem and any relevant information you want to be included, such as the characters' backgrounds or the setting of the poem."
+            );
+            setHintTitle("Describe your poem");
+            setHintVisible(true);
+          }}
+        >
+          <span className="sr-only">Help with “Describe your poem”</span>
+          <QuestionMarkCircleIcon
+            className="h-6 w-6 text-gray-400 group-hover:text-gray-600"
+            aria-hidden="true"
+          />
+        </button>
         <div className="relative mt-4">
           <div
             ref={promptRef}

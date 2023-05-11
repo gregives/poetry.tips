@@ -66,7 +66,7 @@ export default function PoemPage({
                   step.substring(summaryPosition + 1),
                 ];
                 return (
-                  <li key={step} className="pl-1 ml-5 mb-2">
+                  <li key={step} className="pl-1 ml-5 mb-3">
                     <strong className="font-semibold">{summary}:</strong>
                     {complete}
                   </li>
