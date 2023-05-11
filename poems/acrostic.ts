@@ -6,6 +6,7 @@ export const acrostic = {
     {
       name: "acrosticWord",
       label: "Acrostic word",
+      placeholder: "Knight",
       hint: 'The first letter of each line of the poem will spell this word. For example, if your acrostic word is "Summer", the first line of the poem will begin with "S", the second line will begin with "U" and so on.',
     },
   ],

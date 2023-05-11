@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import { CallToAction } from "@/components/CallToAction";
 
 export function Anchor(properties: JSX.IntrinsicElements["a"]) {
   return (
@@ -34,34 +35,26 @@ export function Heading3(properties: JSX.IntrinsicElements["h2"]) {
 }
 
 export function Paragraph(properties: JSX.IntrinsicElements["p"]) {
-  return <p className="my-8" {...properties} />;
+  return <p className="mb-8" {...properties} />;
 }
 
 export function OrderedList(properties: JSX.IntrinsicElements["ol"]) {
   return (
-    <ol
-      className="leading-8 list-decimal marker:tracking-tighter"
-      {...properties}
-    />
+    <ol className="list-decimal marker:tracking-tighter" {...properties} />
   );
 }
 
 export function UnorderedList(properties: JSX.IntrinsicElements["ul"]) {
-  return (
-    <ul
-      className="leading-8 list-disc marker:tracking-tighter"
-      {...properties}
-    />
-  );
+  return <ul className="list-disc marker:tracking-tighter" {...properties} />;
 }
 
 export function ListItem(properties: JSX.IntrinsicElements["li"]) {
-  return <li className="pl-1 ml-5 mb-2" {...properties} />;
+  return <li className="pl-1 ml-5 mb-8 -mt-5" {...properties} />;
 }
 
 export function Pre(properties: JSX.IntrinsicElements["pre"]) {
   return (
-    <div className="bg-gray-100 rounded-3xl p-6 whitespace-pre-line">
+    <div className="bg-gray-100 rounded-3xl p-6 whitespace-pre-line my-8">
       {properties.children}
     </div>
   );
@@ -83,6 +76,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     li: ListItem,
     pre: Pre,
     code: Div,
+    CallToAction,
     ...components,
   };
 }
