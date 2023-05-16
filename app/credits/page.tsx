@@ -50,6 +50,7 @@ export default async function CreditsPage() {
             },
           ],
           mode: "payment",
+          allow_promotion_codes: true,
         });
 
         if (href === null || price.unit_amount === null) {
