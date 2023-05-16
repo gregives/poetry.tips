@@ -137,7 +137,7 @@ export default async function CreditsPage() {
               className={twMerge(
                 index === 1
                   ? "bg-gradient-to-br from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white"
-                  : "text-green-600 ring-1 ring-inset ring-green-200 hover:ring-green-300",
+                  : "bg-gradient-to-br from-transparent to-green-50 hover:from-green-50 hover:to-green-100 text-green-600 ring-1 ring-inset ring-green-200",
                 "mt-6 block w-full rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-green-600"
               )}
             >
