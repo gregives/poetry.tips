@@ -11,7 +11,8 @@ type Tier = {
   name: string;
   href: string;
   description: string;
-  price: string;
+  fullPrice: string;
+  salePrice: string;
 };
 
 const origin =
@@ -50,7 +51,11 @@ export default async function CreditsPage() {
             },
           ],
           mode: "payment",
-          allow_promotion_codes: true,
+          discounts: [
+            {
+              coupon: "promo_1N8Lh0JUwy0YXRzBRsHsdOqG",
+            },
+          ],
         });
 
         if (href === null || price.unit_amount === null) {
@@ -61,7 +66,8 @@ export default async function CreditsPage() {
           name: product.name,
           href,
           description: product.description,
-          price: `$${price.unit_amount / 100}`,
+          fullPrice: `$${price.unit_amount / 100}`,
+          salePrice: `$${price.unit_amount / 200}`,
         };
       })
     )
@@ -130,7 +136,10 @@ export default async function CreditsPage() {
               {tier.description}
             </p>
             <p className="mt-6 text-4xl font-bold tracking-tight text-gray-900">
-              {tier.price}
+              {tier.salePrice !== tier.fullPrice && (
+                <s className="text-gray-300">{tier.fullPrice}</s>
+              )}{" "}
+              {tier.salePrice}
             </p>
             <a
               href={tier.href}
