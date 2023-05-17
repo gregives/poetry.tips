@@ -53,7 +53,7 @@ export default async function CreditsPage() {
           mode: "payment",
           discounts: [
             {
-              coupon: "promo_1N8Lh0JUwy0YXRzBRsHsdOqG",
+              promotion_code: "promo_1N8Lh0JUwy0YXRzBRsHsdOqG",
             },
           ],
         });
