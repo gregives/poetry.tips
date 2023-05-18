@@ -30,7 +30,7 @@ export default function HomePage() {
           >
             <h2
               className={twMerge(
-                "text-xl font-semibold tracking-tight leading-6",
+                "text-xl/snug font-semibold tracking-tight pr-10",
                 poemType.classNames.title
               )}
             >
@@ -41,7 +41,7 @@ export default function HomePage() {
             </h2>
             <p
               className={twMerge(
-                "mt-8 text-sm opacity-80 saturate-50",
+                "mt-6 text-sm opacity-80 saturate-50",
                 poemType.classNames.title
               )}
             >
