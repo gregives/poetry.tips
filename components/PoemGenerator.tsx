@@ -90,7 +90,7 @@ export function PoemGenerator({ type }: PoemGeneratorProperties) {
         </label>
         <select
           id="type"
-          className="mt-4 block w-full bg-transparent rounded-xl border-0 py-3 pl-4 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800"
+          className="mt-4 block w-full bg-transparent backdrop-blur-sm rounded-xl border-0 py-3 pl-4 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-800"
           required
           {...register("type", {
             required: true,
@@ -134,7 +134,7 @@ export function PoemGenerator({ type }: PoemGeneratorProperties) {
           <input
             id={option.name}
             placeholder={option.placeholder}
-            className="mt-4 block w-full bg-transparent rounded-xl border-0 py-3 pl-4 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800"
+            className="mt-4 block w-full bg-transparent backdrop-blur-sm rounded-xl border-0 py-3 pl-4 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-800"
             required
             {...register(option.name, {
               required: true,
@@ -174,16 +174,10 @@ export function PoemGenerator({ type }: PoemGeneratorProperties) {
           />
         </button>
         <div className="relative mt-4">
-          <div
-            ref={promptRef}
-            className="absolute left-0 top-0 pt-3 pl-4 text-gray-900 pointer-events-none box-content"
-          >
-            Write a poem about&nbsp;
-          </div>
           <textarea
             rows={4}
             id="prompt"
-            className="block w-full bg-transparent rounded-xl border-0 py-3 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-800 resize-none"
+            className="block w-full bg-transparent backdrop-blur-sm rounded-xl border-0 py-3 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-800 resize-none"
             placeholder="a knight in shining armour"
             required
             style={{
@@ -193,6 +187,12 @@ export function PoemGenerator({ type }: PoemGeneratorProperties) {
               required: true,
             })}
           />
+          <div
+            ref={promptRef}
+            className="absolute left-0 top-0 pt-3 pl-4 text-gray-900 pointer-events-none box-content"
+          >
+            Write a poem about&nbsp;
+          </div>
         </div>
       </div>
       <button
