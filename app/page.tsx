@@ -10,7 +10,7 @@ export default function HomePage() {
     <Container className="pt-16 pb-24">
       <HeroPattern />
       <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-        <div className="-my-2 relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 backdrop-blur-lg">
+        <div className="-my-2 relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-inset ring-1 ring-gray-900/10 backdrop-blur-lg backdrop-saturate-150">
           More than 1,000 poems generated
         </div>
       </div>
