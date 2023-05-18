@@ -36,7 +36,7 @@ export default function HomePage() {
             >
               <Link href={poemType.href} className="focus:outline-none">
                 <span className="absolute inset-0" aria-hidden="true" />
-                {poemType.name}
+                {poemType.name} Generator
               </Link>
             </h2>
             <p
