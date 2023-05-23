@@ -57,7 +57,7 @@ export function PoemCard({
       <div className="px-6 pb-6 pt-2 flex items-stretch space-x-3">
         <button
           type="button"
-          className="flex w-full justify-center items-center space-x-4 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 py-3 px-4 font-medium hover:from-blue-100 hover:to-blue-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800"
+          className="flex w-full justify-center items-center space-x-4 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 py-3 px-4 font-medium hover:from-blue-100 hover:to-blue-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800 shadow-md shadow-blue-500/10 ring-1 ring-blue-800/5"
           onClick={shareAvailable ? shareResponse : copyResponse}
         >
           {shareAvailable
@@ -67,7 +67,7 @@ export function PoemCard({
             : "Copy to clipboard"}
         </button>
         <Menu as="div" className="relative">
-          <Menu.Button className="h-full flex items-center text-gray-500 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 py-3 px-1 font-medium hover:from-gray-100 hover:to-gray-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800">
+          <Menu.Button className="h-full flex items-center text-gray-500 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 py-3 px-1 font-medium hover:from-gray-100 hover:to-gray-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800 shadow-md shadow-gray-500/5 ring-1 ring-gray-800/5">
             <span className="sr-only">Open options</span>
             <EllipsisVerticalIcon className="h-6 w-6" aria-hidden="true" />
           </Menu.Button>

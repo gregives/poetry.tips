@@ -199,6 +199,7 @@ export function PoemGenerator({ type }: PoemGeneratorProperties) {
         className={twMerge(
           "flex w-full justify-center items-center space-x-4 rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 hover:brightness-95 hover:saturate-150",
           classNames.background,
+          classNames.shadow,
           classNames.title,
           classNames.focusVisible
         )}

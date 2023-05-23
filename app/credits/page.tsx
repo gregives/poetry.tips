@@ -137,7 +137,7 @@ export default async function CreditsPage() {
             </p>
             <p className="mt-6 text-4xl font-bold tracking-tight text-gray-900">
               {tier.salePrice !== tier.fullPrice && (
-                <s className="text-gray-300">{tier.fullPrice}</s>
+                <s className="text-gray-300 blur-[1.5px]">{tier.fullPrice}</s>
               )}{" "}
               {tier.salePrice}
             </p>
@@ -145,8 +145,8 @@ export default async function CreditsPage() {
               href={tier.href}
               className={twMerge(
                 index === 1
-                  ? "bg-gradient-to-br from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white"
-                  : "bg-gradient-to-br from-transparent to-green-50 hover:from-green-50 hover:to-green-100 text-green-600 ring-1 ring-inset ring-green-200",
+                  ? "bg-gradient-to-br from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-md shadow-green-500/10 ring-1 ring-green-800/5"
+                  : "bg-gradient-to-br from-green-50 to-green-100 hover:from-transparent hover:to-green-50 text-green-600 shadow-md shadow-green-500/10 ring-1 ring-green-800/5",
                 "mt-6 block w-full rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-green-600"
               )}
             >

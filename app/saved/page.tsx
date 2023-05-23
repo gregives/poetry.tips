@@ -65,7 +65,7 @@ export default async function SavedPage() {
         <div className="mt-8">
           <Link
             href="/"
-            className="inline-flex items-center rounded-xl py-3 px-4 font-medium bg-gradient-to-br from-indigo-400 to-indigo-500 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="inline-flex items-center rounded-xl py-3 px-4 font-medium bg-gradient-to-br from-indigo-400 to-indigo-500 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 shadow-md shadow-indigo-500/10 ring-1 ring-indigo-800/5"
           >
             <span className="absolute inset-0"></span>
             <PlusIcon className="-ml-0.5 mr-1.5 h-5 w-5" aria-hidden="true" />

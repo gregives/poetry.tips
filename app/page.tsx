@@ -10,7 +10,7 @@ export default function HomePage() {
     <Container className="pt-16 pb-24">
       <HeroPattern />
       <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-        <div className="-my-2 relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-inset ring-1 ring-gray-900/10 backdrop-blur-lg backdrop-saturate-150">
+        <div className="-my-2 relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-inset ring-1 ring-gray-900/5 backdrop-blur-lg backdrop-saturate-150">
           More than 1,000 poems generated
         </div>
       </div>
@@ -25,7 +25,8 @@ export default function HomePage() {
             className={twMerge(
               "group relative p-6 focus-within:outline focus-within:outline-2 rounded-3xl",
               poemType.classNames.focusWithin,
-              poemType.classNames.background
+              poemType.classNames.background,
+              poemType.classNames.shadow
             )}
           >
             <h2
