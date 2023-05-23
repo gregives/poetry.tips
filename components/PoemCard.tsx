@@ -25,13 +25,13 @@ export function PoemCard({
 
   const shareResponse = async () => {
     await navigator.share({
-      text: `${response}\n\nGenerate your own poem on poetry.tips`,
+      text: `${response}\n\nGenerate your own poem on https://poetry.tips`,
     });
   };
 
   const copyResponse = async () => {
     await navigator.clipboard.writeText(
-      `${response}\n\nGenerate your own poem on poetry.tips`
+      `${response}\n\nGenerate your own poem on https://poetry.tips`
     );
     setCopied(true);
   };
