@@ -107,7 +107,7 @@ export function LogIn({ open, onClose, callbackUrl }: LogInProperties) {
                         Check your email
                       </div>
                     ) : (
-                      <button className="flex w-full justify-center items-center space-x-4 rounded-xl bg-gradient-to-br from-indigo-50 to-indigo-100 py-3 px-4 font-medium hover:from-indigo-100 hover:to-indigo-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800">
+                      <button className="flex w-full justify-center items-center space-x-4 rounded-xl bg-gradient-to-br from-indigo-50 to-indigo-100 py-3 px-4 font-medium hover:from-indigo-100 hover:to-indigo-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800 shadow-md shadow-indigo-500/10 ring-1 ring-indigo-800/5">
                         {emailLoading && <Loading />}
                         <span>Log in with email</span>
                       </button>
@@ -115,7 +115,7 @@ export function LogIn({ open, onClose, callbackUrl }: LogInProperties) {
                   </form>
                   <button
                     type="button"
-                    className="flex w-full justify-center items-center space-x-4 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 py-3 px-4 font-medium hover:from-gray-100 hover:to-gray-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800"
+                    className="flex w-full justify-center items-center space-x-4 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 py-3 px-4 font-medium hover:from-gray-100 hover:to-gray-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800 shadow-md shadow-gray-500/5 ring-1 ring-gray-800/5"
                     onClick={signInWithGoogle}
                   >
                     {googleLoading ? (
