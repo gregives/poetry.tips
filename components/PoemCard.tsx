@@ -1,7 +1,6 @@
 "use client";
 
 import { Optional, Poem } from "@/types";
-import { Loading } from "@/components/Loading";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
