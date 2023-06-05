@@ -11,6 +11,7 @@ import { elegy } from "./elegy";
 import { epigram } from "./epigram";
 import { freeVerse } from "./freeVerse";
 import { haiku } from "./haiku";
+import { iambicPentameter } from "./iambicPentameter";
 import { limerick } from "./limerick";
 import { lovePoem } from "./lovePoem";
 import { narrativePoem } from "./narrativePoem";
@@ -173,6 +174,7 @@ export const poemTypes = [
   epigram,
   freeVerse,
   haiku,
+  iambicPentameter,
   limerick,
   lovePoem,
   narrativePoem,
