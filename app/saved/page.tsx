@@ -36,7 +36,7 @@ export default async function SavedPage() {
       </h1>
       {savedPoems.length > 0 && (
         <p>
-          Here's all the poems that you've generated.{" "}
+          Here are all the poems that you&apos;ve generated.{" "}
           <Link
             href="/"
             className="text-blue-600 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800"
