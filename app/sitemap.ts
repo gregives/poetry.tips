@@ -21,6 +21,7 @@ export const articles: string[] = [
   "the-evolving-landscape-of-love-poems-modern-approaches-and-contemporary-themes",
   "embracing-vulnerability-unveiling-the-power-of-raw-emotions-in-love-poems",
   "unleashing-the-magic-a-step-by-step-guide-to-using-the-love-poem-generator",
+  "mastering-the-art-of-iambic-pentameter-a-guide-for-poets",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
