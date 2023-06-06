@@ -5,7 +5,7 @@ export const cinquain = {
   options: [],
   example: {
     author: "Adelaide Crapsey",
-    text: "Listen…\nWith faint dry sound,\nLike steps of passing ghosts,\nThe leaves, frost-crisp’d, break from the trees\nAnd fall.",
+    text: "Listen…\nWith faint dry sound,\nLike steps of passing ghosts,\nThe leaves, frost-crisp'd, break from the trees\nAnd fall.",
   },
   steps: [
     "Choose a subject: Select a specific subject or topic that you want to focus on in your cinquain poem. It could be a person, an object, an emotion, or anything that inspires you.",

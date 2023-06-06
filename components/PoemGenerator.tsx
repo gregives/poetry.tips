@@ -125,7 +125,7 @@ export function PoemGenerator({ type }: PoemGeneratorProperties) {
               setHintVisible(true);
             }}
           >
-            <span className="sr-only">Help with “{option.label}”</span>
+            <span className="sr-only">Help with "{option.label}"</span>
             <QuestionMarkCircleIcon
               className="h-6 w-6 text-gray-400 group-hover:text-gray-600"
               aria-hidden="true"
@@ -167,7 +167,7 @@ export function PoemGenerator({ type }: PoemGeneratorProperties) {
             setHintVisible(true);
           }}
         >
-          <span className="sr-only">Help with “Describe your poem”</span>
+          <span className="sr-only">Help with "Describe your poem"</span>
           <QuestionMarkCircleIcon
             className="h-6 w-6 text-gray-400 group-hover:text-gray-600"
             aria-hidden="true"
