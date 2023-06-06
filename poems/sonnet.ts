@@ -5,7 +5,7 @@ export const sonnet = {
   options: [],
   example: {
     author: "William Shakespeare",
-    text: "Shall I compare thee to a summer’s day?\nThou art more lovely and more temperate.\nRough winds do shake the darling buds of May,\nAnd summer’s lease hath all too short a date.\nSometime too hot the eye of heaven shines,\nAnd often is his gold complexion dimmed;\nAnd every fair from fair sometime declines,\nBy chance, or nature’s changing course, untrimmed;\nBut thy eternal summer shall not fade,\nNor lose possession of that fair thou ow’st,\nNor shall death brag thou wand'rest in his shade,\nWhen in eternal lines to Time thou grow'st.\nSo long as men can breathe, or eyes can see,\nSo long lives this, and this gives life to thee.",
+    text: "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate.\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date.\nSometime too hot the eye of heaven shines,\nAnd often is his gold complexion dimmed;\nAnd every fair from fair sometime declines,\nBy chance, or nature's changing course, untrimmed;\nBut thy eternal summer shall not fade,\nNor lose possession of that fair thou ow'st,\nNor shall death brag thou wand'rest in his shade,\nWhen in eternal lines to Time thou grow'st.\nSo long as men can breathe, or eyes can see,\nSo long lives this, and this gives life to thee.",
   },
   steps: [
     "Choose a theme or subject: Select a theme or subject that you want to explore in your sonnet. It could be love, nature, a personal experience, or any other topic that resonates with you. Having a clear focus will guide your writing.",

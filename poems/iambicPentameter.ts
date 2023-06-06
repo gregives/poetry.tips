@@ -5,7 +5,7 @@ export const iambicPentameter = {
   options: [],
   example: {
     author: "Alfred Tennyson",
-    text: "It may be that the gulfs will wash us down:\nIt may be we shall touch the Happy Isles,\nAnd see the great Achilles, whom we knew.\nTho’ much is taken, much abides; and tho’\nWe are not now that strength which in old days\nMoved earth and heaven, that which we are, we are;\nOne equal temper of heroic hearts,\nMade weak by time and fate, but strong in will\nTo strive, to seek, to find, and not to yield.",
+    text: "It may be that the gulfs will wash us down:\nIt may be we shall touch the Happy Isles,\nAnd see the great Achilles, whom we knew.\nTho' much is taken, much abides; and tho'\nWe are not now that strength which in old days\nMoved earth and heaven, that which we are, we are;\nOne equal temper of heroic hearts,\nMade weak by time and fate, but strong in will\nTo strive, to seek, to find, and not to yield.",
   },
   steps: [
     'Understand the meter: Familiarize yourself with the iambic pentameter pattern, which consists of five pairs of stressed and unstressed syllables per line. Recognize the rhythmic da-DUM pattern, with "da" representing the unstressed syllable and "DUM" the stressed syllable.',

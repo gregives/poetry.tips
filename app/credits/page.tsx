@@ -90,8 +90,8 @@ export default async function CreditsPage() {
       <HeroPattern className="bg-gradient-to-br from-green-50 to-green-100" />
       <h1 className="text-3xl/snug sm:text-4xl/snug font-bold tracking-tight mb-4">
         {credits === 0
-          ? "You’ve ran out of credits"
-          : `You’ve got ${credits.toString().toLowerCase()} credits`}
+          ? "You've ran out of credits"
+          : `You've got ${credits.toString().toLowerCase()} credits`}
       </h1>
       <p>
         {credits !== 0 ? (
@@ -105,7 +105,7 @@ export default async function CreditsPage() {
             {credits !== "Unlimited" && "Or top your credits up below."}
           </>
         ) : (
-          "If you want to generate any more poems, you’ll need to buy some more credits below."
+          "If you want to generate any more poems, you'll need to buy some more credits below."
         )}
       </p>
       <div className="mt-8 sm:mt-12 isolate mx-auto grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">

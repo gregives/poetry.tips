@@ -73,7 +73,8 @@ export default function PoemPage({
                 <strong className="font-semibold">
                   Select the type of poem:
                 </strong>{" "}
-                In this case, select “{poemType.name}” from the drop-down list.
+                In this case, select &quot;{poemType.name}&quot; from the
+                drop-down list.
               </li>
               {poemType.options.map((option) => {
                 return (
@@ -89,16 +90,16 @@ export default function PoemPage({
                 <strong className="font-semibold">Describe your poem:</strong>{" "}
                 You should include the theme or subject of the{" "}
                 {poemType.name.toLowerCase()} and any relevant information you
-                want to be included, such as the characters’ backgrounds or the
-                setting of the poem.
+                want to be included, such as the characters&apos; backgrounds or
+                the setting of the poem.
               </li>
               <li className="pl-1 ml-5 mb-3">
                 <strong className="font-semibold">Generate the poem:</strong>{" "}
-                Click the big “Generate” button and watch as the artificial
-                intelligence generates your poem for you. When it’s finished,
-                you can share the poem with the world, or if you’re not happy,
-                regenerate another {poemType.name.toLowerCase()} about the same
-                topic.
+                Click the big &quot;Generate&quot; button and watch as the
+                artificial intelligence generates your poem for you. When
+                it&apos;s finished, you can share the poem with the world, or if
+                you&apos;re not happy, regenerate another{" "}
+                {poemType.name.toLowerCase()} about the same topic.
               </li>
             </ol>
           </dd>
