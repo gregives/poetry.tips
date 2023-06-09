@@ -24,7 +24,7 @@ export async function createOpenGraphImage({
   description = defaultMetadata.description,
   color = poemTypes[0].classNames.color,
 }: OpenGraphImageProperties) {
-  if (title.includes(" — ")) {
+  if (title.includes("—")) {
     title = title.split(/ ?— ?/)[0];
   }
 
