@@ -20,17 +20,11 @@ type OpenGraphImageProperties = {
 const defaultMetadata = generateMetadataFromSlug();
 
 export async function createOpenGraphImage({
-  title = defaultMetadata.title,
+  title = defaultMetadata.openGraph.title,
   description = defaultMetadata.description,
   color = poemTypes[0].classNames.color,
 }: OpenGraphImageProperties) {
-  if (title.includes("—")) {
-    title = title.split(/ ?— ?/)[0];
-  }
-
-  if (title.startsWith("AI")) {
-    title = title.replace(/^AI ?/, "");
-  }
+  title = title.replace(/^AI ?/, "");
 
   return new ImageResponse(
     (
