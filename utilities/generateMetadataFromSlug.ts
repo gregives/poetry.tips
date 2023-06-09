@@ -5,8 +5,8 @@ export function generateMetadataFromSlug(slug?: string) {
   const path = poem === undefined ? "" : `/poem/${slug}`;
   const poemName = poem?.name ?? "Poem";
 
-  const title = `AI ${poemName} Generator`;
-  const description = `Automatically generate ${poemName.toLowerCase()}s using artificial intelligence. Just describe the theme of your poem and the poem generator will do the rest.`;
+  const title = `AI ${poemName} Generator — Best ${poemName} Generator 2023`;
+  const description = `Automatically generate ${poemName.toLowerCase()}s using artificial intelligence. Just describe the theme of your poem and the ${poemName.toLowerCase()} generator will do the rest.`;
 
   return {
     title,

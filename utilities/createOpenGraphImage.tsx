@@ -24,7 +24,13 @@ export async function createOpenGraphImage({
   description = defaultMetadata.description,
   color = poemTypes[0].classNames.color,
 }: OpenGraphImageProperties) {
-  title = title.replace(/^AI /, "");
+  if (title.includes(" — ")) {
+    title = title.split(/ ?— ?/)[0];
+  }
+
+  if (title.startsWith("AI")) {
+    title = title.replace(/^AI ?/, "");
+  }
 
   return new ImageResponse(
     (
@@ -96,14 +102,14 @@ export async function createOpenGraphImage({
             letterSpacing: "-0.025em",
             color: color[800],
             fontWeight: "bold",
-            marginTop: 64,
+            margin: 64,
           }}
         >
           {title}
         </h1>
         <p
           style={{
-            marginTop: 32,
+            marginTop: -32,
             fontSize: 32,
             lineHeight: 1.5,
             maxWidth: 1000,
