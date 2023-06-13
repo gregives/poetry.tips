@@ -21,6 +21,12 @@ const origin =
     ? `https://poetry-tips-git-${process.env.VERCEL_GIT_COMMIT_REF}-gregives.vercel.app`
     : "https://www.poetry.tips";
 
+export const metadata = {
+  alternates: {
+    canonical: "/credits",
+  },
+};
+
 export default async function CreditsPage() {
   const session = await getServerSession();
   const email = session?.user?.email;

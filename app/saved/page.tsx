@@ -9,6 +9,12 @@ import { Poem } from "@/types";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
+export const metadata = {
+  alternates: {
+    canonical: "/saved",
+  },
+};
+
 export default async function SavedPage() {
   const session = await getServerSession();
   const email = session?.user?.email;

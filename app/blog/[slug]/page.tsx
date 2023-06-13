@@ -10,24 +10,23 @@ export async function generateMetadata({
     slug: string;
   };
 }) {
-  try {
-    const { metadata } = await import(`@/markdown/${params.slug}.mdx`);
+  const { metadata } = await import(`@/markdown/${params.slug}.mdx`);
 
-    return {
+  return {
+    title: `${metadata.title} — AI Poem Generator`,
+    description: metadata.description,
+    openGraph: {
       title: metadata.title,
       description: metadata.description,
-      openGraph: {
-        title: metadata.title,
-        description: metadata.description,
-      },
-      twitter: {
-        title: metadata.title,
-        description: metadata.description,
-      },
-    };
-  } catch {
-    return {};
-  }
+    },
+    twitter: {
+      title: metadata.title,
+      description: metadata.description,
+    },
+    alternates: {
+      canonical: `/blog/${params.slug}`,
+    },
+  };
 }
 
 export default async function ArticlePage({

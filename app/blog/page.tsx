@@ -1,18 +1,14 @@
 import { articles as slugs } from "@/app/sitemap";
-import { Metadata } from "@/components/ArticleHeader";
+import { ArticleMetadata } from "@/components/ArticleHeader";
 import { CallToAction } from "@/components/CallToAction";
 import { Container } from "@/components/Container";
 import { HeroPattern } from "@/components/HeroPattern";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Blog",
-  // @ts-ignore
-  openGraph: {
-    title: "Blog",
-  },
-  twitter: {
-    title: "Blog",
+  title: "Blog — AI Poem Generator",
+  alternates: {
+    canonical: "/blog",
   },
 };
 
@@ -20,7 +16,7 @@ export default async function BlogPage() {
   const articles = (
     await Promise.all(slugs.map((slug) => import(`@/markdown/${slug}.mdx`)))
   )
-    .map<Metadata>(({ metadata }, index) => ({
+    .map<ArticleMetadata>(({ metadata }, index) => ({
       ...metadata,
       slug: slugs[index],
     }))

@@ -1,6 +1,12 @@
 import { Container } from "@/components/Container";
 import { HeroPattern } from "@/components/HeroPattern";
 
+export const metadata = {
+  alternates: {
+    canonical: "/cookies",
+  },
+};
+
 export default async function CookiesPage() {
   const { default: Content } = await import("@/markdown/policies/cookies.mdx");
 

@@ -2,6 +2,12 @@ import { firestore } from "@/utilities/firestore";
 import { getServerSession } from "@/utilities/getServerSession";
 import { redirect } from "next/navigation";
 
+export const metadata = {
+  alternates: {
+    canonical: "/generate",
+  },
+};
+
 export async function GET() {
   const session = await getServerSession();
   const email = session?.user?.email;

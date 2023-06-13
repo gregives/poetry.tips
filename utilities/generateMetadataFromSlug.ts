@@ -9,12 +9,12 @@ export function generateMetadataFromSlug(slug?: string) {
   const description = `Automatically generate ${poemName.toLowerCase()}s using artificial intelligence. Just describe the theme of your poem and the ${poemName.toLowerCase()} generator will do the rest.`;
 
   return {
-    title: `${title} — Best ${poemName} Generator 2023`,
+    title: `${title} — Best ${poemName} Maker 2023`,
     description,
     openGraph: {
       title,
       description,
-      url: `https://poetry.tips${path}`,
+      url: path,
       siteName: "Poetry Tips",
       type: "website",
     },
@@ -22,7 +22,7 @@ export function generateMetadataFromSlug(slug?: string) {
       title,
       description,
       card: "summary_large_image",
-      images: [`https://poetry.tips${path}/opengraph-image`],
+      images: [`${path}/opengraph-image`],
     },
   };
 }
