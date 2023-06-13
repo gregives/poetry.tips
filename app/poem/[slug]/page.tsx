@@ -8,7 +8,12 @@ import { notFound } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
-  return generateMetadataFromSlug(params.slug);
+  return {
+    ...generateMetadataFromSlug(params.slug),
+    alternates: {
+      canonical: `/poem/${params.slug}`,
+    },
+  };
 }
 
 export default function PoemPage({
@@ -62,7 +67,8 @@ export default function PoemPage({
           <dd className="mt-4 lg:col-span-2 lg:mt-0">
             <p className="text-base leading-7 text-gray-600 mb-4">
               <span className="capitalize">{poemType.indefiniteArticle}</span>{" "}
-              {poemType.name.toLowerCase()} generator enables you to generate{" "}
+              {poemType.name.toLowerCase()} generator, or{" "}
+              {poemType.name.toLowerCase()} maker, enables you to generate{" "}
               {poemType.name.toLowerCase()}s in seconds using artificial
               intelligence. Follow these {3 + poemType.options.length} steps to
               generate {poemType.indefiniteArticle}{" "}

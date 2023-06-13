@@ -11,7 +11,10 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata = generateMetadataFromSlug();
+export const metadata = {
+  ...generateMetadataFromSlug(),
+  metadataBase: new URL("https://www.poetry.tips"),
+};
 
 export default async function RootLayout({
   children,

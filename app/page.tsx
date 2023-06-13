@@ -5,6 +5,12 @@ import { poemTypesWithoutRandom } from "@/poems";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
+export const metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
+
 export default function HomePage() {
   return (
     <Container className="pt-16 pb-24">

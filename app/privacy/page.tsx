@@ -1,6 +1,12 @@
 import { Container } from "@/components/Container";
 import { HeroPattern } from "@/components/HeroPattern";
 
+export const metadata = {
+  alternates: {
+    canonical: "/privacy",
+  },
+};
+
 export default async function PrivacyPage() {
   const { default: Content } = await import("@/markdown/policies/privacy.mdx");
 
