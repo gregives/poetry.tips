@@ -8,6 +8,6 @@ export const randomPoem = {
   },
   steps: [],
   generatePrompt({ prompt }: { prompt: string }) {
-    return `Write a sestina about ${prompt}`;
+    return `Write a poem about ${prompt}`;
   },
 } as const;
