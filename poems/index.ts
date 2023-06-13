@@ -17,11 +17,12 @@ import { lovePoem } from "./lovePoem";
 import { narrativePoem } from "./narrativePoem";
 import { ode } from "./ode";
 import { pantoum } from "./pantoum";
+import { randomPoem } from "./randomPoem";
+import { rhymingPoem } from "./rhymingPoem";
 import { sestina } from "./sestina";
 import { sonnet } from "./sonnet";
 import { terzaRima } from "./terzaRima";
 import { villanelle } from "./villanelle";
-import { randomPoem } from "./randomPoem";
 
 const classNames = [
   {
@@ -180,6 +181,7 @@ export const poemTypes = [
   narrativePoem,
   ode,
   pantoum,
+  rhymingPoem,
   sestina,
   sonnet,
   terzaRima,
