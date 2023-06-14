@@ -6,7 +6,7 @@ export function generateMetadataFromSlug(slug?: string) {
   const poemName = poem?.name ?? "Poem";
 
   const title = `AI ${poemName} Generator`;
-  const description = `Automatically generate ${poemName.toLowerCase()}s using artificial intelligence. Just describe the theme of your poem and the ${poemName.toLowerCase()} generator will do the rest.`;
+  const description = `Automatically generate ${poemName.toLowerCase()}s using artificial intelligence. Just describe the theme of your poem and the free ${poemName.toLowerCase()} generator will do the rest.`;
 
   return {
     title: `${title} — Best ${poemName} Maker 2023`,
