@@ -1,7 +1,7 @@
 "use client";
 
 import { poemTypes } from "@/poems";
-import { Fragment, useLayoutEffect, useRef, useState } from "react";
+import { FormEvent, Fragment, useLayoutEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useForm } from "react-hook-form";
 import { useSession } from "next-auth/react";
@@ -56,6 +56,15 @@ export function PoemGenerator({ type }: PoemGeneratorProperties) {
       window.removeEventListener("resize", updateTextIndent);
     };
   }, []);
+
+  const resizeTextarea = (event: FormEvent<HTMLTextAreaElement>) => {
+    const textarea = event.target as HTMLTextAreaElement;
+
+    if (textarea !== null) {
+      textarea.style.height = "";
+      textarea.style.height = textarea.scrollHeight + "px";
+    }
+  };
 
   const generatePoem = handleSubmit((options) => {
     localStorage.setItem("options", JSON.stringify(options));
@@ -118,7 +127,7 @@ export function PoemGenerator({ type }: PoemGeneratorProperties) {
             {option.label}
           </label>
           <button
-            className="group absolute top-1 right-0 rounded-full focus:outline-none focus-visible:outline-2 focus:outline-gray-800"
+            className="group absolute top-0 right-0 rounded-full focus:outline-none focus-visible:outline-2 focus:outline-gray-800"
             onClick={() => {
               setHint(option.hint);
               setHintTitle(option.label);
@@ -160,7 +169,7 @@ export function PoemGenerator({ type }: PoemGeneratorProperties) {
           Describe your poem
         </label>
         <button
-          className="group absolute top-1 right-0 rounded-full focus:outline-none focus-visible:outline-2 focus:outline-gray-800"
+          className="group absolute top-0 right-0 rounded-full focus:outline-none focus-visible:outline-2 focus:outline-gray-800"
           onClick={() => {
             setHint(
               "Describe what you want the poem to be about. You should include the theme or subject of the poem and any relevant information you want to be included, such as the characters' backgrounds or the setting of the poem."
@@ -190,6 +199,7 @@ export function PoemGenerator({ type }: PoemGeneratorProperties) {
             {...register("prompt", {
               required: true,
             })}
+            onInput={resizeTextarea}
           />
           <div
             ref={promptRef}
