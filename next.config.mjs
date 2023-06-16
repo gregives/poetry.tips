@@ -8,8 +8,11 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "images.unsplash.com",
-        port: "",
         pathname: "/photo-*",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
       },
     ],
   },

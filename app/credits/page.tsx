@@ -74,8 +74,8 @@ export default async function CreditsPage() {
           name: product.name,
           href,
           description: product.description,
-          fullPrice: `$${price.unit_amount / 100}`,
-          salePrice: `$${price.unit_amount / 200}`,
+          fullPrice: `$${price.unit_amount / 100}`.replace(/\.(\d)$/, ".$10"),
+          salePrice: `$${price.unit_amount / 200}`.replace(/\.(\d)$/, ".$10"),
           subscription: price.recurring !== null,
         };
       })
@@ -177,7 +177,7 @@ export default async function CreditsPage() {
               {tier.subscription && (
                 <span className="text-lg font-normal text-gray-800">
                   {" "}
-                  / month
+                  /&thinsp;month
                 </span>
               )}
             </p>

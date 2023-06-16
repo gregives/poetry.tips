@@ -21,6 +21,7 @@ import { poemTypesWithoutRandom } from "@/poems";
 import { LogIn } from "./LogIn";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const popularPoems = poemTypesWithoutRandom.filter((poemType) =>
   ["Couplet", "Haiku", "Limerick", "Sonnet", "Villanelle"].includes(
@@ -116,8 +117,17 @@ export function Header() {
             {session ? (
               <Menu as="div" className="relative">
                 <div>
-                  <Menu.Button className="-m-1 p-1 text-sm font-semibold leading-6 text-gray-900 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800">
+                  <Menu.Button className="-m-1 p-1 flex items-center text-sm font-semibold leading-6 text-gray-900 rounded-lg focus:outline-none focus-visible:outline-2 focus-visible:outline-gray-800">
                     {session.user?.name ?? "Logged in"}
+                    {session.user?.image && (
+                      <Image
+                        src={session.user.image}
+                        alt=""
+                        className="w-6 h-6 -my-4 ml-4 rounded-full shadow-inner"
+                        width={24}
+                        height={24}
+                      />
+                    )}
                   </Menu.Button>
                 </div>
                 <Transition
