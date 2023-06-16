@@ -59,11 +59,11 @@ export default async function CreditsPage() {
             },
           ],
           mode: price.recurring ? "subscription" : "payment",
-          // discounts: [
-          //   {
-          //     promotion_code: "promo_1N8Lh0JUwy0YXRzBRsHsdOqG",
-          //   },
-          // ],
+          discounts: [
+            {
+              promotion_code: "promo_1N8Lh0JUwy0YXRzBRsHsdOqG",
+            },
+          ],
         });
 
         if (href === null || price.unit_amount === null) {
