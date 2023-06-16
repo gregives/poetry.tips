@@ -8,6 +8,28 @@ if (process.env.STRIPE_ENDPOINT_SECRET === undefined) {
   throw new Error("Missing Stripe endpoint secret");
 }
 
+async function getStripeCustomer(
+  customer: string | Stripe.Customer | Stripe.DeletedCustomer | null
+) {
+  if (customer === null) {
+    throw new Error("Customer does not exist");
+  }
+
+  if (typeof customer === "string") {
+    customer = await stripe.customers.retrieve(customer);
+  }
+
+  if (customer.deleted) {
+    throw new Error(`Customer ${customer.id} has been deleted`);
+  }
+
+  if (customer.email === null) {
+    throw new Error(`Customer ${customer.id} has no associated email address`);
+  }
+
+  return customer;
+}
+
 export async function POST(request: NextRequest) {
   const signature = request.headers.get("stripe-signature");
 
@@ -18,35 +40,75 @@ export async function POST(request: NextRequest) {
     process.env.STRIPE_ENDPOINT_SECRET
   ) as Stripe.DiscriminatedEvent;
 
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object;
+  switch (event.type) {
+    case "checkout.session.completed": {
+      const session = event.data.object;
+      const customer = await getStripeCustomer(session.customer);
 
-    const {
-      data: [purchase],
-    } = await stripe.checkout.sessions.listLineItems(session.id);
+      const {
+        data: [purchase],
+      } = await stripe.checkout.sessions.listLineItems(session.id);
 
-    if (typeof purchase?.price?.product !== "string") {
-      throw new Error("Could not find purchased product");
+      if (purchase?.price?.product === undefined) {
+        throw new Error(
+          `Product does not exist on checkout session ${session.id}`
+        );
+      }
+
+      const product =
+        typeof purchase.price.product === "string"
+          ? await stripe.products.retrieve(purchase.price.product)
+          : purchase.price.product;
+
+      if (product.deleted) {
+        throw new Error(`Product ${product.id} has been deleted`);
+      }
+
+      const {
+        docs: [user],
+      } = await firestore
+        .collection("users")
+        .where("email", "==", customer.email)
+        .limit(1)
+        .get();
+
+      const credits =
+        product.metadata.credits === "Unlimited"
+          ? "Unlimited"
+          : (user.data().credits ?? 5) + parseInt(product.metadata.credits, 10);
+
+      await firestore.collection("users").doc(user.id).update({
+        customer,
+        credits,
+      });
+
+      break;
     }
+    case "customer.subscription.created":
+    case "customer.subscription.deleted":
+    case "customer.subscription.updated": {
+      const subscription = event.data.object;
+      const customer = await getStripeCustomer(subscription.customer);
 
-    const product = await stripe.products.retrieve(purchase.price.product);
+      const {
+        docs: [user],
+      } = await firestore
+        .collection("users")
+        .where("email", "==", customer.email)
+        .limit(1)
+        .get();
 
-    const {
-      docs: [user],
-    } = await firestore
-      .collection("users")
-      .where("email", "==", session.customer_email)
-      .limit(1)
-      .get();
+      const credits = ["canceled", "unpaid"].includes(subscription.status)
+        ? 0
+        : "Unlimited";
 
-    const credits =
-      product.metadata.credits === "Unlimited"
-        ? "Unlimited"
-        : (user.data().credits ?? 5) + parseInt(product.metadata.credits, 10);
+      await firestore.collection("users").doc(user.id).update({
+        customer,
+        credits,
+      });
 
-    await firestore.collection("users").doc(user.id).update({
-      credits,
-    });
+      break;
+    }
   }
 
   return new NextResponse("Success");

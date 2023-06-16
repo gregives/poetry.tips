@@ -6,6 +6,7 @@ import { getServerSession } from "@/utilities/getServerSession";
 import { twMerge } from "tailwind-merge";
 import { stripe } from "@/utilities/stripe";
 import Link from "next/link";
+import Stripe from "stripe";
 
 type Tier = {
   name: string;
@@ -13,6 +14,7 @@ type Tier = {
   description: string;
   fullPrice: string;
   salePrice: string;
+  subscription: boolean;
 };
 
 const origin =
@@ -56,7 +58,7 @@ export default async function CreditsPage() {
               quantity: 1,
             },
           ],
-          mode: "payment",
+          mode: price.recurring ? "subscription" : "payment",
           discounts: [
             {
               promotion_code: "promo_1N8Lh0JUwy0YXRzBRsHsdOqG",
@@ -74,6 +76,7 @@ export default async function CreditsPage() {
           description: product.description,
           fullPrice: `$${price.unit_amount / 100}`,
           salePrice: `$${price.unit_amount / 200}`,
+          subscription: price.recurring !== null,
         };
       })
     )
@@ -90,6 +93,7 @@ export default async function CreditsPage() {
     .get();
 
   const credits: number | "Unlimited" = user.data().credits ?? 5;
+  const customer: Stripe.Customer = user.data().customer;
 
   return (
     <Container className="pt-16 pb-24">
@@ -114,25 +118,49 @@ export default async function CreditsPage() {
           "If you want to generate any more poems, you'll need to buy some more credits below."
         )}
       </p>
-      <div className="mt-8 sm:mt-12 isolate mx-auto grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      {customer && (
+        <div className="mt-8 sm:mt-12 sm:-mb-4 bg-gray-100/50 backdrop-blur-lg shadow-inner rounded-3xl p-6">
+          <h2 className="text-base font-semibold leading-6 text-gray-900">
+            Manage your subscription
+          </h2>
+          <p className="mt-3 mb-6 text-gray-500">
+            Open the billing portal to change your subscription, update your
+            payment method, or view your billing history.
+          </p>
+          <Link
+            href="/billing"
+            className="bg-gradient-to-br from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-lg shadow-green-500/30 border-b-2 border-b-black/20 inline-block rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-green-600"
+          >
+            Open billing portal
+          </Link>
+        </div>
+      )}
+      <div
+        className={twMerge(
+          "mt-8 sm:mt-12 isolate grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3",
+          credits === "Unlimited" && "opacity-50 pointer-events-none"
+        )}
+      >
         {tiers.map((tier, index) => (
           <div
             key={tier.name}
             className={twMerge(
-              index === 1 ? "ring-2 ring-green-600" : "ring-1 ring-gray-200",
+              index === 2
+                ? "ring-2 ring-green-600 sm:col-span-2 lg:col-span-1"
+                : "ring-1 ring-gray-200",
               "flex flex-col rounded-3xl p-6"
             )}
           >
             <div className="flex items-center justify-between gap-x-4">
               <h3
                 className={twMerge(
-                  index === 1 ? "text-green-600" : "text-gray-900",
+                  index === 2 ? "text-green-600" : "text-gray-900",
                   "text-lg font-semibold leading-8"
                 )}
               >
                 {tier.name}
               </h3>
-              {index === 1 ? (
+              {index === 2 ? (
                 <p className="rounded-full bg-green-600/10 px-2.5 py-1 text-xs font-semibold leading-5 text-green-600">
                   Most popular
                 </p>
@@ -146,17 +174,27 @@ export default async function CreditsPage() {
                 <s className="text-gray-300 blur-[1.5px]">{tier.fullPrice}</s>
               )}{" "}
               {tier.salePrice}
+              {tier.subscription && (
+                <span className="text-lg font-normal text-gray-800">
+                  {" "}
+                  / month
+                </span>
+              )}
             </p>
             <a
-              href={tier.href}
+              href={credits === "Unlimited" ? undefined : tier.href}
+              role="link"
+              aria-disabled={credits === "Unlimited"}
               className={twMerge(
-                index === 1
-                  ? "bg-gradient-to-br from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-md shadow-green-500/10 ring-1 ring-green-800/5"
-                  : "bg-gradient-to-br from-green-50 to-green-100 hover:from-transparent hover:to-green-50 text-green-600 shadow-md shadow-green-500/10 ring-1 ring-green-800/5",
+                index === 2
+                  ? "bg-gradient-to-br from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-lg shadow-green-500/20 border-b-2 border-b-black/20"
+                  : "bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 text-green-600 shadow-lg shadow-green-500/10 border-b-2 border-b-green-600/10",
                 "mt-6 block w-full rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-green-600"
               )}
             >
-              Buy {tier.name.toLowerCase()}
+              {tier.subscription
+                ? "Subscribe"
+                : `Buy ${tier.name.toLowerCase()}`}
             </a>
           </div>
         ))}
