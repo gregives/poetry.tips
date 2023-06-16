@@ -80,6 +80,7 @@ export function Header() {
                   aria-hidden="true"
                 />
               </Popover.Button>
+              <Popover.Overlay className="fixed inset-0" />
               <Transition
                 as={Fragment}
                 enter="transition ease-out duration-200"
