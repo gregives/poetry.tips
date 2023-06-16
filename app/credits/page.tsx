@@ -119,17 +119,17 @@ export default async function CreditsPage() {
         )}
       </p>
       {customer && (
-        <div className="mt-8 sm:mt-12 bg-gray-50 shadow-inner rounded-3xl p-6">
+        <div className="mt-8 sm:mt-12 sm:-mb-4 bg-gray-100/50 backdrop-blur-lg shadow-inner rounded-3xl p-6">
           <h2 className="text-base font-semibold leading-6 text-gray-900">
             Manage your subscription
           </h2>
-          <p className="mt-2 mb-6 max-w-2xl text-gray-500">
+          <p className="mt-3 mb-6 text-gray-500">
             Open the billing portal to change your subscription, update your
             payment method, or view your billing history.
           </p>
           <Link
             href="/billing"
-            className="bg-gradient-to-br from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-md shadow-green-500/10 ring-1 ring-green-800/5 inline-block rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-green-600"
+            className="bg-gradient-to-br from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-lg shadow-green-500/30 border-b-2 border-b-black/20 inline-block rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-green-600"
           >
             Open billing portal
           </Link>
@@ -187,8 +187,8 @@ export default async function CreditsPage() {
               aria-disabled={credits === "Unlimited"}
               className={twMerge(
                 index === 2
-                  ? "bg-gradient-to-br from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-md shadow-green-500/10 ring-1 ring-green-800/5"
-                  : "bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 text-green-600 shadow-md shadow-green-500/10 ring-1 ring-green-800/5",
+                  ? "bg-gradient-to-br from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white shadow-lg shadow-green-500/20 border-b-2 border-b-black/20"
+                  : "bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 text-green-600 shadow-lg shadow-green-500/10 border-b-2 border-b-green-600/10",
                 "mt-6 block w-full rounded-xl py-3 px-4 font-medium focus:outline-none focus-visible:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus:outline-green-600"
               )}
             >
