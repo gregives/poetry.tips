@@ -8,28 +8,6 @@ if (process.env.STRIPE_ENDPOINT_SECRET === undefined) {
   throw new Error("Missing Stripe endpoint secret");
 }
 
-async function getStripeCustomer(
-  customer: string | Stripe.Customer | Stripe.DeletedCustomer | null
-) {
-  if (customer === null) {
-    throw new Error("Customer does not exist");
-  }
-
-  if (typeof customer === "string") {
-    customer = await stripe.customers.retrieve(customer);
-  }
-
-  if (customer.deleted) {
-    throw new Error(`Customer ${customer.id} has been deleted`);
-  }
-
-  if (customer.email === null) {
-    throw new Error(`Customer ${customer.id} has no associated email address`);
-  }
-
-  return customer;
-}
-
 export async function POST(request: NextRequest) {
   const signature = request.headers.get("stripe-signature");
 
@@ -43,7 +21,10 @@ export async function POST(request: NextRequest) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object;
-      const customer = await getStripeCustomer(session.customer);
+
+      if (session.customer_email === null) {
+        throw new Error(`Checkout session ${session.id} has no customer email`);
+      }
 
       const {
         data: [purchase],
@@ -68,7 +49,7 @@ export async function POST(request: NextRequest) {
         docs: [user],
       } = await firestore
         .collection("users")
-        .where("email", "==", customer.email)
+        .where("email", "==", session.customer_email)
         .limit(1)
         .get();
 
@@ -78,7 +59,6 @@ export async function POST(request: NextRequest) {
           : (user.data().credits ?? 5) + parseInt(product.metadata.credits, 10);
 
       await firestore.collection("users").doc(user.id).update({
-        customer,
         credits,
       });
 
@@ -88,7 +68,19 @@ export async function POST(request: NextRequest) {
     case "customer.subscription.deleted":
     case "customer.subscription.updated": {
       const subscription = event.data.object;
-      const customer = await getStripeCustomer(subscription.customer);
+
+      let customer = subscription.customer;
+      if (typeof customer === "string") {
+        customer = await stripe.customers.retrieve(customer);
+      }
+
+      if (customer.deleted) {
+        throw new Error(`Customer ${customer.id} has been deleted`);
+      }
+
+      if (customer.email === null) {
+        throw new Error(`Customer ${customer.id} has no email`);
+      }
 
       const {
         docs: [user],
