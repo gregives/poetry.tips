@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
       const credits =
         product.metadata.credits === "Unlimited"
           ? "Unlimited"
-          : (user.data().credits ?? 5) + parseInt(product.metadata.credits, 10);
+          : (user.data().credits ?? 3) + parseInt(product.metadata.credits, 10);
 
       await firestore.collection("users").doc(user.id).update({
         credits,

@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
   const credits =
     user.data().credits === "Unlimited"
       ? "Unlimited"
-      : (user.data().credits ?? 5) - 1;
+      : (user.data().credits ?? 3) - 1;
 
   await firestore
     .collection("users")
