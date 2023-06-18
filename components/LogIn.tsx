@@ -76,11 +76,13 @@ export function LogIn({ open, onClose, callbackUrl }: LogInProperties) {
                       as="h3"
                       className="text-base font-semibold leading-6 text-gray-900"
                     >
-                      Generate your poem
+                      {callbackUrl
+                        ? "Generate this poem for free"
+                        : "Create an account or log in"}
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        Create a free account to generate 5 poems for free. Get
+                        Create an account to generate 3 poems for free. Get
                         started today.
                       </p>
                     </div>

@@ -18,7 +18,7 @@ export async function GET() {
     .limit(1)
     .get();
 
-  const credits: number | "Unlimited" = user.data().credits ?? 5;
+  const credits: number | "Unlimited" = user.data().credits ?? 3;
 
   if (credits === 0) {
     redirect("/credits");

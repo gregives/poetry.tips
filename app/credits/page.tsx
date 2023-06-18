@@ -59,11 +59,6 @@ export default async function CreditsPage() {
             },
           ],
           mode: price.recurring ? "subscription" : "payment",
-          discounts: [
-            {
-              promotion_code: "promo_1N8Lh0JUwy0YXRzBRsHsdOqG",
-            },
-          ],
         });
 
         if (href === null || price.unit_amount === null) {
@@ -75,7 +70,7 @@ export default async function CreditsPage() {
           href,
           description: product.description,
           fullPrice: `$${price.unit_amount / 100}`.replace(/\.(\d)$/, ".$10"),
-          salePrice: `$${price.unit_amount / 200}`.replace(/\.(\d)$/, ".$10"),
+          salePrice: `$${price.unit_amount / 100}`.replace(/\.(\d)$/, ".$10"),
           subscription: price.recurring !== null,
         };
       })
@@ -92,7 +87,7 @@ export default async function CreditsPage() {
     .limit(1)
     .get();
 
-  const credits: number | "Unlimited" = user.data().credits ?? 5;
+  const credits: number | "Unlimited" = user.data().credits ?? 3;
   const customer: Stripe.Customer = user.data().customer;
 
   return (
