@@ -14,21 +14,20 @@ if (
   throw new Error("Missing Google environment variables");
 }
 
+const ESCAPED_HOST = "poetry&#8203;.tips";
+
 async function sendVerificationRequest({
   identifier,
   url,
   provider,
 }: SendVerificationRequestParams) {
-  const { host } = new URL(url);
-  const escapedHost = host.replace(/^www\./, "").replace(/\./g, "&#8203;.");
-
   const transport = createTransport(provider.server);
   const result = await transport.sendMail({
     to: identifier,
     from: '"Poetry Tips" <contact@poetry.tips>',
-    subject: `Log in to ${host}`,
-    text: `Click the link below to log in to ${host}\n\n${url}\n\n`,
-    html: `<body>Click the link below to log in to ${escapedHost}<br/><br/><a href="${url}">Log in to ${escapedHost}</a><br/><br/></body>`,
+    subject: "Welcome to poetry.tips",
+    text: `At ${ESCAPED_HOST} we don't use passwords, just click the link below to log in\n\n${url}\n\n`,
+    html: `<body>At ${ESCAPED_HOST} we don't use passwords, just click the link below to log in<br/><br/><a href="${url}">Log in to ${ESCAPED_HOST}</a><br/><br/></body>`,
   });
 
   const failed = result.rejected.concat(result.pending).filter(Boolean);
