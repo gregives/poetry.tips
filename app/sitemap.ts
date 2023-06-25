@@ -22,6 +22,8 @@ export const articles: string[] = [
   "embracing-vulnerability-unveiling-the-power-of-raw-emotions-in-love-poems",
   "unleashing-the-magic-a-step-by-step-guide-to-using-the-love-poem-generator",
   "mastering-the-art-of-iambic-pentameter-a-guide-for-poets",
+  "unlocking-the-beauty-of-sonnets-a-guide-to-understanding-and-appreciating-the-form",
+  "the-sonnet-generator-unveiled-a-step-by-step-guide-to-creating-poetic-masterpieces",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
